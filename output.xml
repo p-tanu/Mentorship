@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 5.0 (Python 3.10.4 on win32)" generated="20220606 21:18:24.769" rpa="false" schemaversion="3">
+<suite id="s1" name="TestCases" source="D:\Amazon1\Tests\TestCases.robot">
+<kw name="Open Amazon Website" library="Instructions" type="SETUP">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${Url}</arg>
+<arg>${Browser}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20220606 21:18:25.139" level="INFO">Opening browser 'gc' to base url 'https://www.amazon.in/'.</msg>
+<status status="PASS" starttime="20220606 21:18:25.138" endtime="20220606 21:18:29.033"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20220606 21:18:29.033" endtime="20220606 21:18:29.600"/>
+</kw>
+<status status="PASS" starttime="20220606 21:18:25.138" endtime="20220606 21:18:29.600"/>
+</kw>
+<test id="s1-t1" name="User Should Be Able To Add An Item In The Cart" line="9">
+<kw name="Given User Clicks On Electronics Options" library="Instructions">
+<kw name="Click Link" library="SeleniumLibrary">
+<arg>${Electronics}</arg>
+<doc>Clicks a link identified by ``locator``.</doc>
+<msg timestamp="20220606 21:18:29.615" level="INFO">Clicking link 'xpath://*[@href='/electronics/b/?ie=UTF8&amp;node=976419031&amp;ref_=nav_cs_electronics']'.</msg>
+<status status="PASS" starttime="20220606 21:18:29.614" endtime="20220606 21:18:32.845"/>
+</kw>
+<status status="PASS" starttime="20220606 21:18:29.613" endtime="20220606 21:18:32.845"/>
+</kw>
+<kw name="Then User Searches For Particular Item And Clicks On It" library="Instructions">
+<arg>${Extra}</arg>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${Searchbar}</arg>
+<arg>${ARG}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220606 21:18:32.847" level="INFO">Typing text 'boAt Bassheads 100 in Ear Wired Earphones with Mic(Black)' into text field 'xpath://*[@id='twotabsearchtextbox']'.</msg>
+<status status="PASS" starttime="20220606 21:18:32.847" endtime="20220606 21:18:33.441"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${SearchButton}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220606 21:18:33.442" level="INFO">Clicking element 'xpath://*[@id='nav-search-submit-button']'.</msg>
+<status status="PASS" starttime="20220606 21:18:33.441" endtime="20220606 21:18:36.137"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>xpath://*[text()='${ARG}']</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220606 21:18:36.138" level="INFO">Clicking element 'xpath://*[text()='boAt Bassheads 100 in Ear Wired Earphones with Mic(Black)']'.</msg>
+<status status="PASS" starttime="20220606 21:18:36.138" endtime="20220606 21:18:36.546"/>
+</kw>
+<status status="PASS" starttime="20220606 21:18:32.846" endtime="20220606 21:18:36.547"/>
+</kw>
+<kw name="Then User Adds The Item In Cart" library="Instructions">
+<kw name="Switch Window" library="SeleniumLibrary">
+<arg>New</arg>
+<doc>Switches to browser window matching ``locator``.</doc>
+<status status="PASS" starttime="20220606 21:18:36.553" endtime="20220606 21:18:36.609"/>
+</kw>
+<kw name="Scroll Element Into View" library="SeleniumLibrary">
+<arg>${AddToCart}</arg>
+<doc>Scrolls the element identified by ``locator`` into view.</doc>
+<status status="PASS" starttime="20220606 21:18:36.609" endtime="20220606 21:18:41.622"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${AddToCart}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220606 21:18:41.622" level="INFO">Clicking element 'xpath://*[@id='add-to-cart-button']'.</msg>
+<status status="PASS" starttime="20220606 21:18:41.622" endtime="20220606 21:18:43.019"/>
+</kw>
+<status status="PASS" starttime="20220606 21:18:36.549" endtime="20220606 21:18:43.020"/>
+</kw>
+<kw name="Given User Clicks On Cart" library="Instructions">
+<kw name="Click Link" library="SeleniumLibrary">
+<arg>${CartButton}</arg>
+<doc>Clicks a link identified by ``locator``.</doc>
+<msg timestamp="20220606 21:18:43.027" level="INFO">Clicking link 'xpath://*[@href='https://www.amazon.in/gp/cart/view.html?ref_=nav_cart']'.</msg>
+<status status="PASS" starttime="20220606 21:18:43.026" endtime="20220606 21:18:45.993"/>
+</kw>
+<status status="PASS" starttime="20220606 21:18:43.026" endtime="20220606 21:18:45.994"/>
+</kw>
+<kw name="Then Users Checks For Recently Added Item" library="Instructions">
+<arg>${Extra}</arg>
+<kw name="Page Should Contain" library="SeleniumLibrary">
+<arg>${ARG}</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<msg timestamp="20220606 21:18:46.075" level="INFO">Current page contains text 'boAt Bassheads 100 in Ear Wired Earphones with Mic(Black)'.</msg>
+<status status="PASS" starttime="20220606 21:18:45.995" endtime="20220606 21:18:46.075"/>
+</kw>
+<status status="PASS" starttime="20220606 21:18:45.994" endtime="20220606 21:18:46.076"/>
+</kw>
+<status status="PASS" starttime="20220606 21:18:29.601" endtime="20220606 21:18:46.076"/>
+</test>
+<test id="s1-t2" name="User Should Be Able To Add Another Item In The Cart" line="16">
+<kw name="Given User Clicks On Electronics Options" library="Instructions">
+<kw name="Click Link" library="SeleniumLibrary">
+<arg>${Electronics}</arg>
+<doc>Clicks a link identified by ``locator``.</doc>
+<msg timestamp="20220606 21:18:46.079" level="INFO">Clicking link 'xpath://*[@href='/electronics/b/?ie=UTF8&amp;node=976419031&amp;ref_=nav_cs_electronics']'.</msg>
+<status status="PASS" starttime="20220606 21:18:46.079" endtime="20220606 21:18:47.820"/>
+</kw>
+<status status="PASS" starttime="20220606 21:18:46.079" endtime="20220606 21:18:47.821"/>
+</kw>
+<kw name="Then User Searches For Particular Item And Clicks On It" library="Instructions">
+<arg>${any}</arg>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${Searchbar}</arg>
+<arg>${ARG}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220606 21:18:47.827" level="INFO">Typing text 'New Apple AirPods Pro with MagSafe Charging Case' into text field 'xpath://*[@id='twotabsearchtextbox']'.</msg>
+<status status="PASS" starttime="20220606 21:18:47.827" endtime="20220606 21:18:48.556"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${SearchButton}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220606 21:18:48.557" level="INFO">Clicking element 'xpath://*[@id='nav-search-submit-button']'.</msg>
+<status status="PASS" starttime="20220606 21:18:48.556" endtime="20220606 21:18:51.667"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>xpath://*[text()='${ARG}']</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220606 21:18:51.668" level="INFO">Clicking element 'xpath://*[text()='New Apple AirPods Pro with MagSafe Charging Case']'.</msg>
+<status status="PASS" starttime="20220606 21:18:51.667" endtime="20220606 21:18:52.082"/>
+</kw>
+<status status="PASS" starttime="20220606 21:18:47.826" endtime="20220606 21:18:52.083"/>
+</kw>
+<kw name="Then User Adds The Item In Cart" library="Instructions">
+<kw name="Switch Window" library="SeleniumLibrary">
+<arg>New</arg>
+<doc>Switches to browser window matching ``locator``.</doc>
+<status status="PASS" starttime="20220606 21:18:52.084" endtime="20220606 21:18:52.101"/>
+</kw>
+<kw name="Scroll Element Into View" library="SeleniumLibrary">
+<arg>${AddToCart}</arg>
+<doc>Scrolls the element identified by ``locator`` into view.</doc>
+<status status="PASS" starttime="20220606 21:18:52.102" endtime="20220606 21:18:55.337"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${AddToCart}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220606 21:18:55.338" level="INFO">Clicking element 'xpath://*[@id='add-to-cart-button']'.</msg>
+<status status="PASS" starttime="20220606 21:18:55.338" endtime="20220606 21:18:56.740"/>
+</kw>
+<status status="PASS" starttime="20220606 21:18:52.084" endtime="20220606 21:18:56.741"/>
+</kw>
+<kw name="Given User Clicks On Cart" library="Instructions">
+<kw name="Click Link" library="SeleniumLibrary">
+<arg>${CartButton}</arg>
+<doc>Clicks a link identified by ``locator``.</doc>
+<msg timestamp="20220606 21:18:56.743" level="INFO">Clicking link 'xpath://*[@href='https://www.amazon.in/gp/cart/view.html?ref_=nav_cart']'.</msg>
+<status status="PASS" starttime="20220606 21:18:56.742" endtime="20220606 21:18:59.693"/>
+</kw>
+<status status="PASS" starttime="20220606 21:18:56.742" endtime="20220606 21:18:59.693"/>
+</kw>
+<kw name="Then Users Checks For Recently Added Item" library="Instructions">
+<arg>${any}</arg>
+<kw name="Page Should Contain" library="SeleniumLibrary">
+<arg>${ARG}</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<msg timestamp="20220606 21:18:59.749" level="INFO">Current page contains text 'New Apple AirPods Pro with MagSafe Charging Case'.</msg>
+<status status="PASS" starttime="20220606 21:18:59.695" endtime="20220606 21:18:59.750"/>
+</kw>
+<status status="PASS" starttime="20220606 21:18:59.694" endtime="20220606 21:18:59.750"/>
+</kw>
+<status status="PASS" starttime="20220606 21:18:46.078" endtime="20220606 21:18:59.750"/>
+</test>
+<status status="PASS" starttime="20220606 21:18:24.772" endtime="20220606 21:18:59.752"/>
+</suite>
+<statistics>
+<total>
+<stat pass="2" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="2" fail="0" skip="0" id="s1" name="TestCases">TestCases</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
