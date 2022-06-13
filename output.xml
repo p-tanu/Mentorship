@@ -1,0 +1,453 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 5.0 (Python 3.10.4 on win32)" generated="20220610 15:25:33.338" rpa="false" schemaversion="3">
+<suite id="s1" name="TestCases" source="D:\AMAzon\Test\TestCases.robot">
+<kw name="Open Amazon Website" library="Instructions" type="SETUP">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${Url}</arg>
+<arg>${Browser}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20220610 15:25:33.641" level="INFO">Opening browser 'gc' to base url 'https://www.amazon.in/'.</msg>
+<status status="PASS" starttime="20220610 15:25:33.639" endtime="20220610 15:25:38.479"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20220610 15:25:38.480" endtime="20220610 15:25:38.776"/>
+</kw>
+<status status="PASS" starttime="20220610 15:25:33.639" endtime="20220610 15:25:38.776"/>
+</kw>
+<test id="s1-t1" name="User Should Be Able To Fetch The Data From The Table" line="20">
+<kw name="Given User Clicks On Fashion Option" library="Instructions">
+<kw name="Click Link" library="SeleniumLibrary">
+<arg>${Fashion}</arg>
+<doc>Clicks a link identified by ``locator``.</doc>
+<msg timestamp="20220610 15:25:38.780" level="INFO">Clicking link 'xpath://a[contains(text(),'Fashion')]'.</msg>
+<status status="PASS" starttime="20220610 15:25:38.779" endtime="20220610 15:25:41.906"/>
+</kw>
+<status status="PASS" starttime="20220610 15:25:38.778" endtime="20220610 15:25:41.906"/>
+</kw>
+<kw name="Then User Searches For Item" library="Instructions">
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${Searchbar}</arg>
+<arg>${jeans}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20220610 15:25:41.908" level="INFO">Typing text 'Ben Martin Men's Relaxed Jeans' into text field 'xpath://*[@id='twotabsearchtextbox']'.</msg>
+<status status="PASS" starttime="20220610 15:25:41.907" endtime="20220610 15:25:42.198"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${SearchButton}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220610 15:25:42.201" level="INFO">Clicking element 'xpath://*[@id='nav-search-submit-button']'.</msg>
+<status status="PASS" starttime="20220610 15:25:42.198" endtime="20220610 15:25:45.131"/>
+</kw>
+<status status="PASS" starttime="20220610 15:25:41.907" endtime="20220610 15:25:45.131"/>
+</kw>
+<kw name="Then User Should Be Able To Click On The Particular Item" library="Instructions">
+<kw name="Scroll Element Into View" library="SeleniumLibrary">
+<arg>${clickelement}</arg>
+<doc>Scrolls the element identified by ``locator`` into view.</doc>
+<status status="PASS" starttime="20220610 15:25:45.132" endtime="20220610 15:25:45.624"/>
+</kw>
+<kw name="Click Link" library="SeleniumLibrary">
+<arg>${clickelement}</arg>
+<doc>Clicks a link identified by ``locator``.</doc>
+<msg timestamp="20220610 15:25:45.625" level="INFO">Clicking link 'xpath:(//a[@class='a-link-normal s-underline-text s-underline-link-text s-link-style a-text-normal'])[1]'.</msg>
+<status status="PASS" starttime="20220610 15:25:45.625" endtime="20220610 15:25:46.027"/>
+</kw>
+<status status="PASS" starttime="20220610 15:25:45.132" endtime="20220610 15:25:46.027"/>
+</kw>
+<kw name="Then User Clicks On Size Chart" library="Instructions">
+<kw name="Switch Window" library="SeleniumLibrary">
+<arg>New</arg>
+<doc>Switches to browser window matching ``locator``.</doc>
+<status status="PASS" starttime="20220610 15:25:46.029" endtime="20220610 15:25:46.039"/>
+</kw>
+<kw name="Scroll Element Into View" library="SeleniumLibrary">
+<arg>${Sizechart}</arg>
+<doc>Scrolls the element identified by ``locator`` into view.</doc>
+<status status="PASS" starttime="20220610 15:25:46.039" endtime="20220610 15:25:52.366"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${Sizechart}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220610 15:25:52.366" level="INFO">Clicking element 'xpath://span[@class='a-size-small']'.</msg>
+<status status="PASS" starttime="20220610 15:25:52.366" endtime="20220610 15:25:52.688"/>
+</kw>
+<status status="PASS" starttime="20220610 15:25:46.028" endtime="20220610 15:25:52.688"/>
+</kw>
+<kw name="Then User Must Be Able To Fetch Data From Table" library="Instructions">
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${Data}</var>
+<arg>xpath://table[@id='fit-sizechartv2-0-table-0']//tr[4]//td[5]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220610 15:25:52.731" level="INFO">${Data} = 10</msg>
+<status status="PASS" starttime="20220610 15:25:52.691" endtime="20220610 15:25:52.732"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${Data}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220610 15:25:52.732" endtime="20220610 15:25:52.732"/>
+</kw>
+<kw name="Get Element Count" library="SeleniumLibrary">
+<var>${rowCount}</var>
+<arg>${Rows}</arg>
+<doc>Returns the number of elements matching ``locator``.</doc>
+<msg timestamp="20220610 15:25:52.743" level="INFO">${rowCount} = 8</msg>
+<status status="PASS" starttime="20220610 15:25:52.732" endtime="20220610 15:25:52.743"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${rowCount}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220610 15:25:52.744" endtime="20220610 15:25:52.744"/>
+</kw>
+<for flavor="IN RANGE">
+<var>${rowIndex}</var>
+<value>2</value>
+<value>${rowCount} + 1</value>
+<iter>
+<var name="${rowIndex}">2</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${curText}</var>
+<arg>xpath://table[@id='fit-sizechartv2-0-table-0']//tr[${rowIndex}]/td[5]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220610 15:25:52.767" level="INFO">${curText} = 9.2</msg>
+<status status="PASS" starttime="20220610 15:25:52.745" endtime="20220610 15:25:52.767"/>
+</kw>
+<if>
+<branch type="IF" condition="'${curText}' == '${cellText}'">
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${Dataa}</var>
+<arg>xpath://table[@id='fit-sizechartv2-0-table-0']//tr[${rowIndex}]//td[1]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20220610 15:25:52.767" endtime="20220610 15:25:52.767"/>
+</kw>
+<status status="NOT RUN" starttime="20220610 15:25:52.767" endtime="20220610 15:25:52.767"/>
+</branch>
+<branch type="ELSE">
+<kw name="Log To Console" library="BuiltIn">
+<arg>${curText}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220610 15:25:52.767" endtime="20220610 15:25:52.768"/>
+</kw>
+<status status="PASS" starttime="20220610 15:25:52.767" endtime="20220610 15:25:52.768"/>
+</branch>
+<status status="PASS" starttime="20220610 15:25:52.767" endtime="20220610 15:25:52.768"/>
+</if>
+<status status="PASS" starttime="20220610 15:25:52.745" endtime="20220610 15:25:52.768"/>
+</iter>
+<iter>
+<var name="${rowIndex}">3</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${curText}</var>
+<arg>xpath://table[@id='fit-sizechartv2-0-table-0']//tr[${rowIndex}]/td[5]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220610 15:25:52.794" level="INFO">${curText} = 9.5</msg>
+<status status="PASS" starttime="20220610 15:25:52.768" endtime="20220610 15:25:52.794"/>
+</kw>
+<if>
+<branch type="IF" condition="'${curText}' == '${cellText}'">
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${Dataa}</var>
+<arg>xpath://table[@id='fit-sizechartv2-0-table-0']//tr[${rowIndex}]//td[1]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220610 15:25:52.837" level="INFO">${Dataa} = 30</msg>
+<status status="PASS" starttime="20220610 15:25:52.794" endtime="20220610 15:25:52.837"/>
+</kw>
+<status status="PASS" starttime="20220610 15:25:52.794" endtime="20220610 15:25:52.837"/>
+</branch>
+<branch type="ELSE">
+<kw name="Log To Console" library="BuiltIn">
+<arg>${curText}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="NOT RUN" starttime="20220610 15:25:52.837" endtime="20220610 15:25:52.837"/>
+</kw>
+<status status="NOT RUN" starttime="20220610 15:25:52.837" endtime="20220610 15:25:52.837"/>
+</branch>
+<status status="PASS" starttime="20220610 15:25:52.794" endtime="20220610 15:25:52.837"/>
+</if>
+<status status="PASS" starttime="20220610 15:25:52.768" endtime="20220610 15:25:52.837"/>
+</iter>
+<iter>
+<var name="${rowIndex}">4</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${curText}</var>
+<arg>xpath://table[@id='fit-sizechartv2-0-table-0']//tr[${rowIndex}]/td[5]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220610 15:25:52.893" level="INFO">${curText} = 10</msg>
+<status status="PASS" starttime="20220610 15:25:52.838" endtime="20220610 15:25:52.893"/>
+</kw>
+<if>
+<branch type="IF" condition="'${curText}' == '${cellText}'">
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${Dataa}</var>
+<arg>xpath://table[@id='fit-sizechartv2-0-table-0']//tr[${rowIndex}]//td[1]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20220610 15:25:52.893" endtime="20220610 15:25:52.893"/>
+</kw>
+<status status="NOT RUN" starttime="20220610 15:25:52.893" endtime="20220610 15:25:52.893"/>
+</branch>
+<branch type="ELSE">
+<kw name="Log To Console" library="BuiltIn">
+<arg>${curText}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220610 15:25:52.893" endtime="20220610 15:25:52.894"/>
+</kw>
+<status status="PASS" starttime="20220610 15:25:52.893" endtime="20220610 15:25:52.894"/>
+</branch>
+<status status="PASS" starttime="20220610 15:25:52.893" endtime="20220610 15:25:52.894"/>
+</if>
+<status status="PASS" starttime="20220610 15:25:52.838" endtime="20220610 15:25:52.894"/>
+</iter>
+<iter>
+<var name="${rowIndex}">5</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${curText}</var>
+<arg>xpath://table[@id='fit-sizechartv2-0-table-0']//tr[${rowIndex}]/td[5]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220610 15:25:52.943" level="INFO">${curText} = 10.5</msg>
+<status status="PASS" starttime="20220610 15:25:52.894" endtime="20220610 15:25:52.943"/>
+</kw>
+<if>
+<branch type="IF" condition="'${curText}' == '${cellText}'">
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${Dataa}</var>
+<arg>xpath://table[@id='fit-sizechartv2-0-table-0']//tr[${rowIndex}]//td[1]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20220610 15:25:52.944" endtime="20220610 15:25:52.944"/>
+</kw>
+<status status="NOT RUN" starttime="20220610 15:25:52.943" endtime="20220610 15:25:52.944"/>
+</branch>
+<branch type="ELSE">
+<kw name="Log To Console" library="BuiltIn">
+<arg>${curText}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220610 15:25:52.944" endtime="20220610 15:25:52.944"/>
+</kw>
+<status status="PASS" starttime="20220610 15:25:52.944" endtime="20220610 15:25:52.944"/>
+</branch>
+<status status="PASS" starttime="20220610 15:25:52.943" endtime="20220610 15:25:52.944"/>
+</if>
+<status status="PASS" starttime="20220610 15:25:52.894" endtime="20220610 15:25:52.945"/>
+</iter>
+<iter>
+<var name="${rowIndex}">6</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${curText}</var>
+<arg>xpath://table[@id='fit-sizechartv2-0-table-0']//tr[${rowIndex}]/td[5]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220610 15:25:52.974" level="INFO">${curText} = 11</msg>
+<status status="PASS" starttime="20220610 15:25:52.945" endtime="20220610 15:25:52.974"/>
+</kw>
+<if>
+<branch type="IF" condition="'${curText}' == '${cellText}'">
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${Dataa}</var>
+<arg>xpath://table[@id='fit-sizechartv2-0-table-0']//tr[${rowIndex}]//td[1]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20220610 15:25:52.975" endtime="20220610 15:25:52.975"/>
+</kw>
+<status status="NOT RUN" starttime="20220610 15:25:52.975" endtime="20220610 15:25:52.975"/>
+</branch>
+<branch type="ELSE">
+<kw name="Log To Console" library="BuiltIn">
+<arg>${curText}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220610 15:25:52.975" endtime="20220610 15:25:52.975"/>
+</kw>
+<status status="PASS" starttime="20220610 15:25:52.975" endtime="20220610 15:25:52.975"/>
+</branch>
+<status status="PASS" starttime="20220610 15:25:52.974" endtime="20220610 15:25:52.975"/>
+</if>
+<status status="PASS" starttime="20220610 15:25:52.945" endtime="20220610 15:25:52.976"/>
+</iter>
+<iter>
+<var name="${rowIndex}">7</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${curText}</var>
+<arg>xpath://table[@id='fit-sizechartv2-0-table-0']//tr[${rowIndex}]/td[5]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220610 15:25:52.993" level="INFO">${curText} = 11.8</msg>
+<status status="PASS" starttime="20220610 15:25:52.976" endtime="20220610 15:25:52.993"/>
+</kw>
+<if>
+<branch type="IF" condition="'${curText}' == '${cellText}'">
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${Dataa}</var>
+<arg>xpath://table[@id='fit-sizechartv2-0-table-0']//tr[${rowIndex}]//td[1]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20220610 15:25:52.994" endtime="20220610 15:25:52.994"/>
+</kw>
+<status status="NOT RUN" starttime="20220610 15:25:52.994" endtime="20220610 15:25:52.994"/>
+</branch>
+<branch type="ELSE">
+<kw name="Log To Console" library="BuiltIn">
+<arg>${curText}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220610 15:25:52.994" endtime="20220610 15:25:52.994"/>
+</kw>
+<status status="PASS" starttime="20220610 15:25:52.994" endtime="20220610 15:25:52.994"/>
+</branch>
+<status status="PASS" starttime="20220610 15:25:52.993" endtime="20220610 15:25:52.994"/>
+</if>
+<status status="PASS" starttime="20220610 15:25:52.976" endtime="20220610 15:25:52.994"/>
+</iter>
+<iter>
+<var name="${rowIndex}">8</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${curText}</var>
+<arg>xpath://table[@id='fit-sizechartv2-0-table-0']//tr[${rowIndex}]/td[5]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220610 15:25:53.012" level="INFO">${curText} = 12.2</msg>
+<status status="PASS" starttime="20220610 15:25:52.995" endtime="20220610 15:25:53.012"/>
+</kw>
+<if>
+<branch type="IF" condition="'${curText}' == '${cellText}'">
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${Dataa}</var>
+<arg>xpath://table[@id='fit-sizechartv2-0-table-0']//tr[${rowIndex}]//td[1]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20220610 15:25:53.012" endtime="20220610 15:25:53.012"/>
+</kw>
+<status status="NOT RUN" starttime="20220610 15:25:53.012" endtime="20220610 15:25:53.012"/>
+</branch>
+<branch type="ELSE">
+<kw name="Log To Console" library="BuiltIn">
+<arg>${curText}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220610 15:25:53.012" endtime="20220610 15:25:53.013"/>
+</kw>
+<status status="PASS" starttime="20220610 15:25:53.012" endtime="20220610 15:25:53.013"/>
+</branch>
+<status status="PASS" starttime="20220610 15:25:53.012" endtime="20220610 15:25:53.013"/>
+</if>
+<status status="PASS" starttime="20220610 15:25:52.995" endtime="20220610 15:25:53.013"/>
+</iter>
+<status status="PASS" starttime="20220610 15:25:52.744" endtime="20220610 15:25:53.013"/>
+</for>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${Dataa}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220610 15:25:53.013" endtime="20220610 15:25:53.014"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${CloseChart}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220610 15:25:53.014" level="INFO">Clicking element 'xpath://*[@class=' a-button-close a-declarative']'.</msg>
+<status status="PASS" starttime="20220610 15:25:53.014" endtime="20220610 15:25:53.123"/>
+</kw>
+<kw name="Wait For And Click On Element" library="Common">
+<kw name="Sleep" library="BuiltIn">
+<arg>7s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20220610 15:26:00.137" level="INFO">Slept 7 seconds</msg>
+<status status="PASS" starttime="20220610 15:25:53.125" endtime="20220610 15:26:00.137"/>
+</kw>
+<status status="PASS" starttime="20220610 15:25:53.125" endtime="20220610 15:26:00.137"/>
+</kw>
+<if>
+<branch type="IF" condition="&quot;${BOX}&quot; == &quot;True&quot;">
+<kw name="Log To Console" library="BuiltIn">
+<arg>${Dataa}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="NOT RUN" starttime="20220610 15:26:00.138" endtime="20220610 15:26:00.138"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>xpath://input[@name='1' and @aria-labelledby='size_name_1-announce']</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20220610 15:26:00.138" endtime="20220610 15:26:00.138"/>
+</kw>
+<status status="NOT RUN" starttime="20220610 15:26:00.138" endtime="20220610 15:26:00.138"/>
+</branch>
+<branch type="ELSE">
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>xpath://*[text()=' ${Dataa} ']</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220610 15:26:00.139" level="INFO">Clicking element 'xpath://*[text()=' 30 ']'.</msg>
+<msg timestamp="20220610 15:26:01.565" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-78.png"&gt;&lt;img src="selenium-screenshot-78.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg timestamp="20220610 15:26:01.566" level="FAIL">ElementClickInterceptedException: Message: element click intercepted: Element &lt;span class="a-size-base swatch-title-text-display swatch-title-text" style="height: 20px;"&gt;...&lt;/span&gt; is not clickable at point (795, 351). Other element would receive the click: &lt;input name="1" class="a-button-input" type="submit" aria-labelledby="size_name_1-announce"&gt;
+  (Session info: chrome=102.0.5005.63)
+Stacktrace:
+Backtrace:
+	Ordinal0 [0x0089D953+2414931]
+	Ordinal0 [0x0082F5E1+1963489]
+	Ordinal0 [0x0071C6B8+837304]
+	Ordinal0 [0x0074FC27+1047591]
+	Ordinal0 [0x0074DC08+1039368]
+	Ordinal0 [0x0074B90B+1030411]
+	Ordinal0 [0x0074A659+1025625]
+	Ordinal0 [0x00740293+983699]
+	Ordinal0 [0x0076449C+1131676]
+	Ordinal0 [0x0073FC74+982132]
+	Ordinal0 [0x007646B4+1132212]
+	Ordinal0 [0x00774812+1198098]
+	Ordinal0 [0x007642B6+1131190]
+	Ordinal0 [0x0073E860+976992]
+	Ordinal0 [0x0073F756+980822]
+	GetHandleVerifier [0x00B0CC62+2510274]
+	GetHandleVerifier [0x00AFF760+2455744]
+	GetHandleVerifier [0x0092EABA+551962]
+	GetHandleVerifier [0x0092D916+547446]
+	Ordinal0 [0x00835F3B+1990459]
+	Ordinal0 [0x0083A898+2009240]
+	Ordinal0 [0x0083A985+2009477]
+	Ordinal0 [0x00843AD1+2046673]
+	BaseThreadInitThunk [0x75BAFA29+25]
+	RtlGetAppContainerNamedObjectPath [0x77BC7A7E+286]
+	RtlGetAppContainerNamedObjectPath [0x77BC7A4E+238]
+</msg>
+<status status="FAIL" starttime="20220610 15:26:00.138" endtime="20220610 15:26:01.569"/>
+</kw>
+<status status="FAIL" starttime="20220610 15:26:00.138" endtime="20220610 15:26:01.569"/>
+</branch>
+<status status="FAIL" starttime="20220610 15:26:00.137" endtime="20220610 15:26:01.570"/>
+</if>
+<status status="FAIL" starttime="20220610 15:25:52.690" endtime="20220610 15:26:01.570"/>
+</kw>
+<tag>Second</tag>
+<status status="FAIL" starttime="20220610 15:25:38.776" endtime="20220610 15:26:01.571">ElementClickInterceptedException: Message: element click intercepted: Element &lt;span class="a-size-base swatch-title-text-display swatch-title-text" style="height: 20px;"&gt;...&lt;/span&gt; is not clickable at point (795, 351). Other element would receive the click: &lt;input name="1" class="a-button-input" type="submit" aria-labelledby="size_name_1-announce"&gt;
+  (Session info: chrome=102.0.5005.63)
+Stacktrace:
+Backtrace:
+	Ordinal0 [0x0089D953+2414931]
+	Ordinal0 [0x0082F5E1+1963489]
+	Ordinal0 [0x0071C6B8+837304]
+	Ordinal0 [0x0074FC27+1047591]
+	Ordinal0 [0x0074DC08+1039368]
+	Ordinal0 [0x0074B90B+1030411]
+	Ordinal0 [0x0074A659+1025625]
+	Ordinal0 [0x00740293+983699]
+	Ordinal0 [0x0076449C+1131676]
+	Ordinal0 [0x0073FC74+982132]
+	Ordinal0 [0x007646B4+1132212]
+	Ordinal0 [0x00774812+1198098]
+	Ordinal0 [0x007642B6+1131190]
+	Ordinal0 [0x0073E860+976992]
+	Ordinal0 [0x0073F756+980822]
+	GetHandleVerifier [0x00B0CC62+2510274]
+	GetHandleVerifier [0x00AFF760+2455744]
+	GetHandleVerifier [0x0092EABA+551962]
+	GetHandleVerifier [0x0092D916+547446]
+	Ordinal0 [0x00835F3B+1990459]
+	Ordinal0 [0x0083A898+2009240]
+	Ordinal0 [0x0083A985+2009477]
+	Ordinal0 [0x00843AD1+2046673]
+	BaseThreadInitThunk [0x75BAFA29+25]
+	RtlGetAppContainerNamedObjectPath [0x77BC7A7E+286]
+	RtlGetAppContainerNamedObjectPath [0x77BC7A4E+238]
+</status>
+</test>
+<status status="FAIL" starttime="20220610 15:25:33.342" endtime="20220610 15:26:01.575"/>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="1" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="0" fail="1" skip="0">Second</stat>
+</tag>
+<suite>
+<stat pass="0" fail="1" skip="0" id="s1" name="TestCases">TestCases</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
