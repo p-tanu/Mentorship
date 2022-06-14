@@ -2,4 +2,4 @@
 
 Wait For And Click On Element
  
-   sleep     7s
+   sleep     10s
