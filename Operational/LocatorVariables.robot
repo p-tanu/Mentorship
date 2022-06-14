@@ -29,4 +29,6 @@ ${withprice}  =  xpath://span[id='size_name_4'] input[name='4']
 ${BOX} =   xpath:(//span[@class = 'a-button-inner'])[23]
 ${Shirt} =  U.S. POLO ASSN. Men's Regular fit T-Shirt
 ${Prod} =  xpath://*[@class='a-section aok-relative s-image-tall-aspect']
-${xyz}  =  xpath://*[text()=' L ']
+${xyz} =  xpath://span[@id='native_size_name_2']
+${PQR} =  xpath://span[@id='size_name_2']
+# //span[contains(@class, 'a-size-base') and text()=' L ']
