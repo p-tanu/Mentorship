@@ -39,12 +39,12 @@ Given User Clicks On Fashion Option
     Click Link  ${Fashion}
     
 Then User Searches For Item
-    Input Text  ${Searchbar}  ${jeans}
+    Input Text  ${Searchbar}  ${shirt}
     Click Element  ${SearchButton}
 
 Then User Should Be Able To Click On The Particular Item
-    Scroll Element Into View  ${clickelement}
-    Click Link  ${clickelement}
+  #  Scroll Element Into View  ${Prod}
+    Click Element  ${Prod}
 
 Then User Clicks On Size Chart
     Switch Window  New
@@ -52,14 +52,13 @@ Then User Clicks On Size Chart
     Click Element  ${Sizechart}
 
 Then User Must Be Able To Fetch Data From Table 
-    ${Data}     Get Text  xpath://table[@id='fit-sizechartv2-0-table-0']//tr[4]//td[5]
-    Log To Console  ${Data}
+   
 
     ${rowCount}=    Get Element Count    ${Rows}
     Log To Console  ${rowCount}
     
     FOR  ${rowIndex}  IN RANGE     2  ${rowCount} + 1
-        ${curText}=    Get Text   xpath://table[@id='fit-sizechartv2-0-table-0']//tr[${rowIndex}]/td[5]
+        ${curText}=    Get Text   xpath://table[@id='fit-sizechartv2-0-table-0']//tr[${rowIndex}]/td[4]
         
 
     IF   '${curText}' == '${cellText}'
@@ -75,21 +74,23 @@ Then User Must Be Able To Fetch Data From Table
 
     Log To Console  ${Dataa}
     Click Element   ${CloseChart}
-    Wait For And Click On Element
-    
+    # Wait For And Click On Element
+    Sleep  5s
+    ${abc} =  Run Keyword And Return Status  Element Should Be Visible  ${xyz}
+    Run Keyword If  ${abc}  Click Element  ${xyz}
 
 
     #Click Element  ${SS}
 
 
-    IF   "${BOX}" == "True"
-        Log To Console  ${Dataa}
-        Click Element  xpath://input[@name='1' and @aria-labelledby='size_name_1-announce']
+    # IF   "${BOX}" == "True"
+    #     Log To Console  ${Dataa}
+    #     Click Element  xpath:(//span[@class = 'a-button-inner'])[23]
     
-    ELSE
-        Click Element  xpath://*[text()=' ${Dataa} ']
+    # ELSE
+    #     Click Element  xpath://*[text()=' ${Dataa} ']
 
-    END
+    # END
    
 
    
