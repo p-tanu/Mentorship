@@ -1,5 +1,10 @@
 *** Keywords ***
 
 User Clicks On Cart
-    Sleep  3s
+    Wait Until Page Contains Element  ${CartButton}
     Click Link  ${CartButton}
+
+
+Wait For Element
+    [Arguments]  ${ARGSS}
+    Wait Until Page Contains Element  ${ARGSS}

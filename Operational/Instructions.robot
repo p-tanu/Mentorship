@@ -82,6 +82,7 @@ And Selects A Size And Adds It To The Cart
     Run Keyword If  ${AA}  Click Element  xpath://span[@id='size_name_${BS}']
     ...  ELSE   Click Element  xpath://*[text()=' ${BrandSize} ']
     Sleep  5s
+    #Wait For Element  ${AddToCart}
     Click Element  ${AddToCart}
    
 
