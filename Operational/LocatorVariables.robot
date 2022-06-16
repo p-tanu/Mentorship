@@ -20,7 +20,7 @@ ${Polo} =  xpath:(//span[@dir='auto'])[11]
 
 ${clickelement} =  xpath:(//a[@class='a-link-normal s-underline-text s-underline-link-text s-link-style a-text-normal'])[1]
 ${tabledata} =  xpath://table[@id='fit-sizechartv2-0-table-0']//tr[4]//td[5]
-${cellText} =  17.8 
+${cellText} =  17 
 ${print} =  huhuhuhuhuhauhauh
 ${CloseChart}=  xpath://*[@class=' a-button-close a-declarative']
 ${Rows} =  xpath://table[@id='fit-sizechartv2-0-table-0']//tr

@@ -1,5 +1,7 @@
 *** Keywords ***
 
 Wait For And Click On Element
- 
-   sleep     5s
+   [Arguments]    ${argx}
+   Scroll Element Into View  ${argx}
+   Wait Until Page Contains Element  ${argx}  timeout=10s
+   Click Element  ${argx}

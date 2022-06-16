@@ -23,7 +23,7 @@ User Should Be Able To Fetch The Data From The Table
     Then User Searches For Item  
     Then User Should Be Able To Click On The Particular Item
     Then User Clicks On Size Chart
-    Then User Must Be Able To Fetch Data From Table 
+    Then User Must Be Able To Fetch Data From Table  
     
 
 

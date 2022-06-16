@@ -21,7 +21,7 @@ And User Clicks On The Item
     Click Element  ${ItemNeeded}    
     
   
-Then User Adds The Item In Cart
+Then User Adds The Item In Cart  
     Switch Window  New
     Scroll Element Into View  ${AddToCart}
     Click Element  ${AddToCart}
@@ -65,10 +65,20 @@ Then User Must Be Able To Fetch Data From Table
     Log To Console  ${Dataa}
     Click Element   ${CloseChart}
     # Wait For And Click On Element
-    Sleep  5s
-    Log Source
+    IF    "${Dataa}" == "S"
+        ${BS} =    Set Variable  0
+    ELSE IF    "${Dataa}" == "M"
+        ${BS} =    Set Variable  1
+    ELSE IF    "${Dataa}" == "L"
+        ${BS} =    Set Variable  2
+    ELSE IF    "${Dataa}" == "XL"
+        ${BS} =    Set Variable  3
+    ELSE
+        ${BS} =    Set Variable  4
+    END
+    Log To Console  ${BS}
     ${AA} =  Run Keyword And Return Status  Element Should Be Visible  ${PQR}
-    Run Keyword If  ${AA}  Click Element  ${PQR}
+    Run Keyword If  ${AA}  Click Element  xpath://span[@id='size_name_${BS}']
     ...  ELSE   Click Element  xpath://*[text()=' ${Dataa} ']
 
     # IF   "${BOX}" == "True"
@@ -80,6 +90,10 @@ Then User Must Be Able To Fetch Data From Table
 
     # END
    
+    Sleep  2s
+    Wait For And Click On Element  ${AddToCart}
+    Wait For And Click On Element  ${CartButton}
+    
 
    
     
