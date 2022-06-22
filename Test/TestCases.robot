@@ -8,25 +8,23 @@ Suite Setup  Open Amazon Website
 
 *** Test Cases ***
 User Should Be Able To Add An Item In The Cart
-
-    [Tags]  First
     Given User Clicks On Electronics Options
-    Then User Searches For Particular Item  ${ARG}
-    And User Clicks On The Item 
+    Then User Searches For Particular Item And Clicks On It  ${Extra}  
     Then User Adds The Item In Cart
-    Given User Clicks On Cart
-    Then Users Checks For Recently Added Item  ${ARG}
+    User Clicks On Cart
+    Then Users Checks For Recently Added Item  ${Extra}  
 
-User Should Be Able To Fetch The Data From The Table
-    [Tags]  Second
-    Given User Clicks On Fashion Option
-    Then User Searches For Item  
-    Then User Should Be Able To Click On The Particular Item
-    Then User Clicks On Size Chart
-    Then User Must Be Able To Fetch Data From Table  
-    
+User Should Be Able To Add Another Item In The Cart
+    Given User Clicks On Electronics Options
+    Then User Searches For Particular Item And Clicks On It  ${any}  
+    Then User Adds The Item In Cart
+    User Clicks On Cart
+    Then Users Checks For Recently Added Item  ${any} 
 
-
-    
-
-
+User Should Be Able To Add A Product Into The Cart Based On Any Parameter In Size Chart
+    [Tags]  First
+    User Searches For An Item And Clicks On It
+    Then Opens Size Chart  
+    And Closes Size Chart
+    And Selects A Size And Adds It To The Cart
+    User Clicks On Cart
