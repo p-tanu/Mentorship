@@ -2,6 +2,7 @@
 Resource  ../Operational/Instructions.robot
 Resource  ../Operational/LocatorVariables.robot
 Resource  ../Operational/Common.robot
+Resource  ../Input.txt
 
 Suite Setup  Open Amazon Website
 #Suite Teardown  Close Browser
@@ -22,9 +23,13 @@ User Should Be Able To Add Another Item In The Cart
     Then Users Checks For Recently Added Item  ${any} 
 
 User Should Be Able To Add A Product Into The Cart Based On Any Parameter In Size Chart
-    [Tags]  First
+    [Tags]  Second
     User Searches For An Item And Clicks On It
     Then Opens Size Chart  
     And Closes Size Chart
     And Selects A Size And Adds It To The Cart
     User Clicks On Cart
+
+User Should Be Able To Add Product
+    [Tags]  First
+    Then Selects

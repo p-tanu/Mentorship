@@ -9,7 +9,7 @@ ${AddToCart} =  xpath://*[@id='add-to-cart-button']
 ${CartButton} =  xpath://*[@href='https://www.amazon.in/gp/cart/view.html?ref_=nav_cart']
 ${Extra} =  boAt Bassheads 100 in Ear Wired Earphones with Mic(Black)
 ${any} =  New Apple AirPods Pro with MagSafe Charging Case
-${Shirt} =  puma men s regular fit t-shirt
+#${Shirt} =  puma men s regular fit t-shirt
 ${Chest} =  xpath://table[@id='fit-sizechartv2-0-table-0']//td[3]
 ${Prod} =  xpath://*[@class='a-section aok-relative s-image-tall-aspect']
 ${Chart} =  xpath://*[text()=' Size Chart ']
