@@ -1,178 +1,1176 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 5.0 (Python 3.10.4 on win32)" generated="20220606 21:18:24.769" rpa="false" schemaversion="3">
+<robot generator="Robot 5.0 (Python 3.10.4 on win32)" generated="20220629 17:27:47.918" rpa="false" schemaversion="3">
 <suite id="s1" name="TestCases" source="D:\Amazon1\Tests\TestCases.robot">
 <kw name="Open Amazon Website" library="Instructions" type="SETUP">
 <kw name="Open Browser" library="SeleniumLibrary">
 <arg>${Url}</arg>
 <arg>${Browser}</arg>
 <doc>Opens a new browser instance to the optional ``url``.</doc>
-<msg timestamp="20220606 21:18:25.139" level="INFO">Opening browser 'gc' to base url 'https://www.amazon.in/'.</msg>
-<status status="PASS" starttime="20220606 21:18:25.138" endtime="20220606 21:18:29.033"/>
+<msg timestamp="20220629 17:27:48.265" level="INFO">Opening browser 'gc' to base url 'https://www.amazon.in/'.</msg>
+<status status="PASS" starttime="20220629 17:27:48.265" endtime="20220629 17:27:52.145"/>
 </kw>
 <kw name="Maximize Browser Window" library="SeleniumLibrary">
 <doc>Maximizes current browser window.</doc>
-<status status="PASS" starttime="20220606 21:18:29.033" endtime="20220606 21:18:29.600"/>
+<status status="PASS" starttime="20220629 17:27:52.145" endtime="20220629 17:27:52.617"/>
 </kw>
-<status status="PASS" starttime="20220606 21:18:25.138" endtime="20220606 21:18:29.600"/>
+<status status="PASS" starttime="20220629 17:27:48.264" endtime="20220629 17:27:52.618"/>
 </kw>
-<test id="s1-t1" name="User Should Be Able To Add An Item In The Cart" line="9">
-<kw name="Given User Clicks On Electronics Options" library="Instructions">
-<kw name="Click Link" library="SeleniumLibrary">
-<arg>${Electronics}</arg>
-<doc>Clicks a link identified by ``locator``.</doc>
-<msg timestamp="20220606 21:18:29.615" level="INFO">Clicking link 'xpath://*[@href='/electronics/b/?ie=UTF8&amp;node=976419031&amp;ref_=nav_cs_electronics']'.</msg>
-<status status="PASS" starttime="20220606 21:18:29.614" endtime="20220606 21:18:32.845"/>
+<test id="s1-t1" name="User Should Be Able To Add Product through text file" line="33">
+<kw name="User Selects A Product" library="Instructions">
+<kw name="Get File" library="OperatingSystem">
+<var>${TextFile}</var>
+<arg>Input.txt</arg>
+<doc>Returns the contents of a specified file.</doc>
+<msg timestamp="20220629 17:27:52.621" level="INFO" html="true">Getting file '&lt;a href="file://D:\Amazon1\Input.txt"&gt;D:\Amazon1\Input.txt&lt;/a&gt;'.</msg>
+<msg timestamp="20220629 17:27:52.621" level="INFO">${TextFile} = Veirdo Oversized | Loose Fit | Relaxed Fit | Wide Fit 100% Cotton Half Sleeves Smile Printed T-Shirt for Mens/Boys_Chest_40
+u.s. polo assn. men's regular fit t-shirt_Length_27.5</msg>
+<status status="PASS" starttime="20220629 17:27:52.621" endtime="20220629 17:27:52.622"/>
 </kw>
-<status status="PASS" starttime="20220606 21:18:29.613" endtime="20220606 21:18:32.845"/>
+<kw name="Split String" library="String">
+<var>${List}</var>
+<arg>${TextFile}</arg>
+<arg>\n</arg>
+<doc>Splits the ``string`` using ``separator`` as a delimiter string.</doc>
+<msg timestamp="20220629 17:27:52.623" level="INFO">${List} = ['Veirdo Oversized | Loose Fit | Relaxed Fit | Wide Fit 100% Cotton Half Sleeves Smile Printed T-Shirt for Mens/Boys_Chest_40', "u.s. polo assn. men's regular fit t-shirt_Length_27.5"]</msg>
+<status status="PASS" starttime="20220629 17:27:52.622" endtime="20220629 17:27:52.623"/>
 </kw>
-<kw name="Then User Searches For Particular Item And Clicks On It" library="Instructions">
-<arg>${Extra}</arg>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${List}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220629 17:27:52.624" endtime="20220629 17:27:52.625"/>
+</kw>
+<kw name="Get Length" library="BuiltIn">
+<var>${Length}</var>
+<arg>${List}</arg>
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<msg timestamp="20220629 17:27:52.625" level="INFO">Length is 2</msg>
+<msg timestamp="20220629 17:27:52.626" level="INFO">${Length} = 2</msg>
+<status status="PASS" starttime="20220629 17:27:52.625" endtime="20220629 17:27:52.626"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${Length}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220629 17:27:52.626" endtime="20220629 17:27:52.627"/>
+</kw>
+<for flavor="IN RANGE">
+<var>${Item}</var>
+<value>0</value>
+<value>${Length}</value>
+<iter>
+<var name="${Item}">0</var>
+<kw name="Get From List" library="Collections">
+<var>${Ele}</var>
+<arg>${List}</arg>
+<arg>${Item}</arg>
+<doc>Returns the value specified with an ``index`` from ``list``.</doc>
+<msg timestamp="20220629 17:27:52.628" level="INFO">${Ele} = Veirdo Oversized | Loose Fit | Relaxed Fit | Wide Fit 100% Cotton Half Sleeves Smile Printed T-Shirt for Mens/Boys_Chest_40</msg>
+<status status="PASS" starttime="20220629 17:27:52.628" endtime="20220629 17:27:52.628"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${Ele}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220629 17:27:52.629" endtime="20220629 17:27:52.629"/>
+</kw>
+<kw name="Split String" library="String">
+<var>${result}</var>
+<arg>${Ele}</arg>
+<arg>_</arg>
+<doc>Splits the ``string`` using ``separator`` as a delimiter string.</doc>
+<msg timestamp="20220629 17:27:52.630" level="INFO">${result} = ['Veirdo Oversized | Loose Fit | Relaxed Fit | Wide Fit 100% Cotton Half Sleeves Smile Printed T-Shirt for Mens/Boys', 'Chest', '40']</msg>
+<status status="PASS" starttime="20220629 17:27:52.629" endtime="20220629 17:27:52.630"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${result}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220629 17:27:52.630" endtime="20220629 17:27:52.631"/>
+</kw>
+<kw name="Get From List" library="Collections">
+<var>${Shirt}</var>
+<arg>${result}</arg>
+<arg>0</arg>
+<doc>Returns the value specified with an ``index`` from ``list``.</doc>
+<msg timestamp="20220629 17:27:52.631" level="INFO">${Shirt} = Veirdo Oversized | Loose Fit | Relaxed Fit | Wide Fit 100% Cotton Half Sleeves Smile Printed T-Shirt for Mens/Boys</msg>
+<status status="PASS" starttime="20220629 17:27:52.631" endtime="20220629 17:27:52.631"/>
+</kw>
+<kw name="Get From List" library="Collections">
+<var>${Param}</var>
+<arg>${result}</arg>
+<arg>1</arg>
+<doc>Returns the value specified with an ``index`` from ``list``.</doc>
+<msg timestamp="20220629 17:27:52.632" level="INFO">${Param} = Chest</msg>
+<status status="PASS" starttime="20220629 17:27:52.631" endtime="20220629 17:27:52.632"/>
+</kw>
+<kw name="Get From List" library="Collections">
+<var>${InputMeasurements}</var>
+<arg>${result}</arg>
+<arg>2</arg>
+<doc>Returns the value specified with an ``index`` from ``list``.</doc>
+<msg timestamp="20220629 17:27:52.633" level="INFO">${InputMeasurements} = 40</msg>
+<status status="PASS" starttime="20220629 17:27:52.632" endtime="20220629 17:27:52.633"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${Shirt}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220629 17:27:52.633" endtime="20220629 17:27:52.633"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${Param}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220629 17:27:52.633" endtime="20220629 17:27:52.634"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${InputMeasurements}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220629 17:27:52.634" endtime="20220629 17:27:52.636"/>
+</kw>
 <kw name="Input Text" library="SeleniumLibrary">
 <arg>${Searchbar}</arg>
-<arg>${ARG}</arg>
+<arg>${Shirt}</arg>
 <doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<msg timestamp="20220606 21:18:32.847" level="INFO">Typing text 'boAt Bassheads 100 in Ear Wired Earphones with Mic(Black)' into text field 'xpath://*[@id='twotabsearchtextbox']'.</msg>
-<status status="PASS" starttime="20220606 21:18:32.847" endtime="20220606 21:18:33.441"/>
+<msg timestamp="20220629 17:27:52.638" level="INFO">Typing text 'Veirdo Oversized | Loose Fit | Relaxed Fit | Wide Fit 100% Cotton Half Sleeves Smile Printed T-Shirt for Mens/Boys' into text field 'xpath://*[@id='twotabsearchtextbox']'.</msg>
+<status status="PASS" starttime="20220629 17:27:52.636" endtime="20220629 17:27:53.750"/>
 </kw>
 <kw name="Click Element" library="SeleniumLibrary">
 <arg>${SearchButton}</arg>
 <doc>Click the element identified by ``locator``.</doc>
-<msg timestamp="20220606 21:18:33.442" level="INFO">Clicking element 'xpath://*[@id='nav-search-submit-button']'.</msg>
-<status status="PASS" starttime="20220606 21:18:33.441" endtime="20220606 21:18:36.137"/>
+<msg timestamp="20220629 17:27:53.751" level="INFO">Clicking element 'xpath://*[@id='nav-search-submit-button']'.</msg>
+<status status="PASS" starttime="20220629 17:27:53.750" endtime="20220629 17:27:56.117"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>7s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20220629 17:28:03.124" level="INFO">Slept 7 seconds</msg>
+<status status="PASS" starttime="20220629 17:27:56.117" endtime="20220629 17:28:03.124"/>
 </kw>
 <kw name="Click Element" library="SeleniumLibrary">
-<arg>xpath://*[text()='${ARG}']</arg>
+<arg>${Prod}</arg>
 <doc>Click the element identified by ``locator``.</doc>
-<msg timestamp="20220606 21:18:36.138" level="INFO">Clicking element 'xpath://*[text()='boAt Bassheads 100 in Ear Wired Earphones with Mic(Black)']'.</msg>
-<status status="PASS" starttime="20220606 21:18:36.138" endtime="20220606 21:18:36.546"/>
+<msg timestamp="20220629 17:28:03.125" level="INFO">Clicking element 'xpath://*[@class='a-section aok-relative s-image-tall-aspect']'.</msg>
+<status status="PASS" starttime="20220629 17:28:03.124" endtime="20220629 17:28:03.421"/>
 </kw>
-<status status="PASS" starttime="20220606 21:18:32.846" endtime="20220606 21:18:36.547"/>
-</kw>
-<kw name="Then User Adds The Item In Cart" library="Instructions">
 <kw name="Switch Window" library="SeleniumLibrary">
 <arg>New</arg>
 <doc>Switches to browser window matching ``locator``.</doc>
-<status status="PASS" starttime="20220606 21:18:36.553" endtime="20220606 21:18:36.609"/>
+<status status="PASS" starttime="20220629 17:28:03.422" endtime="20220629 17:28:03.436"/>
 </kw>
-<kw name="Scroll Element Into View" library="SeleniumLibrary">
-<arg>${AddToCart}</arg>
-<doc>Scrolls the element identified by ``locator`` into view.</doc>
-<status status="PASS" starttime="20220606 21:18:36.609" endtime="20220606 21:18:41.622"/>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${Chart}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220629 17:28:03.437" level="INFO">Clicking element 'xpath://*[text()=' Size Chart ']'.</msg>
+<status status="PASS" starttime="20220629 17:28:03.436" endtime="20220629 17:28:08.325"/>
+</kw>
+<kw name="Get Element Count" library="SeleniumLibrary">
+<var>${rowCount}</var>
+<arg>${Rows}</arg>
+<doc>Returns the number of elements matching ``locator``.</doc>
+<msg timestamp="20220629 17:28:08.400" level="INFO">${rowCount} = 6</msg>
+<status status="PASS" starttime="20220629 17:28:08.325" endtime="20220629 17:28:08.400"/>
+</kw>
+<kw name="Get Element Count" library="SeleniumLibrary">
+<var>${colCount}</var>
+<arg>${Columns}</arg>
+<doc>Returns the number of elements matching ``locator``.</doc>
+<msg timestamp="20220629 17:28:08.435" level="INFO">${colCount} = 5</msg>
+<status status="PASS" starttime="20220629 17:28:08.401" endtime="20220629 17:28:08.435"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${colCount}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220629 17:28:08.436" endtime="20220629 17:28:08.436"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${rowCount}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220629 17:28:08.436" endtime="20220629 17:28:08.437"/>
+</kw>
+<for flavor="IN RANGE">
+<var>${colIndex}</var>
+<value>1</value>
+<value>${colCount} + 1</value>
+<iter>
+<var name="${colIndex}">1</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${colHeader}</var>
+<arg>xpath://table[@id='fit-sizechartv2-0-table-0']//tr[1]//th[${colIndex}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220629 17:28:08.468" level="INFO">${colHeader} = Brand Size</msg>
+<status status="PASS" starttime="20220629 17:28:08.438" endtime="20220629 17:28:08.468"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>'${Param}' == '${colHeader}'</arg>
+<arg>Exit For Loop</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20220629 17:28:08.468" endtime="20220629 17:28:08.469"/>
+</kw>
+<status status="PASS" starttime="20220629 17:28:08.438" endtime="20220629 17:28:08.469"/>
+</iter>
+<iter>
+<var name="${colIndex}">2</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${colHeader}</var>
+<arg>xpath://table[@id='fit-sizechartv2-0-table-0']//tr[1]//th[${colIndex}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220629 17:28:08.500" level="INFO">${colHeader} = India</msg>
+<status status="PASS" starttime="20220629 17:28:08.469" endtime="20220629 17:28:08.500"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>'${Param}' == '${colHeader}'</arg>
+<arg>Exit For Loop</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20220629 17:28:08.500" endtime="20220629 17:28:08.501"/>
+</kw>
+<status status="PASS" starttime="20220629 17:28:08.469" endtime="20220629 17:28:08.501"/>
+</iter>
+<iter>
+<var name="${colIndex}">3</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${colHeader}</var>
+<arg>xpath://table[@id='fit-sizechartv2-0-table-0']//tr[1]//th[${colIndex}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220629 17:28:08.553" level="INFO">${colHeader} = Chest</msg>
+<status status="PASS" starttime="20220629 17:28:08.501" endtime="20220629 17:28:08.553"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>'${Param}' == '${colHeader}'</arg>
+<arg>Exit For Loop</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<kw name="Exit For Loop" library="BuiltIn">
+<doc>Stops executing the enclosing FOR loop.</doc>
+<msg timestamp="20220629 17:28:08.554" level="INFO">Exiting for loop altogether.</msg>
+<status status="PASS" starttime="20220629 17:28:08.554" endtime="20220629 17:28:08.556"/>
+</kw>
+<status status="PASS" starttime="20220629 17:28:08.554" endtime="20220629 17:28:08.556"/>
+</kw>
+<status status="PASS" starttime="20220629 17:28:08.501" endtime="20220629 17:28:08.557"/>
+</iter>
+<status status="PASS" starttime="20220629 17:28:08.437" endtime="20220629 17:28:08.557"/>
+</for>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${Param}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220629 17:28:08.557" endtime="20220629 17:28:08.558"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${InputMeasurements}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220629 17:28:08.558" endtime="20220629 17:28:08.559"/>
+</kw>
+<for flavor="IN RANGE">
+<var>${rowIndex}</var>
+<value>2</value>
+<value>${rowCount} + 1</value>
+<iter>
+<var name="${rowIndex}">2</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${curText}</var>
+<arg>xpath://table[@id='fit-sizechartv2-0-table-0']//tr[${rowIndex}]/td[${colIndex}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220629 17:28:08.589" level="INFO">${curText} = 38</msg>
+<status status="PASS" starttime="20220629 17:28:08.560" endtime="20220629 17:28:08.589"/>
+</kw>
+<if>
+<branch type="IF" condition="&quot;${curText}&quot; == &quot;${InputMeasurements}&quot;">
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${BrandSize}</var>
+<arg>xpath://table[@id='fit-sizechartv2-0-table-0']//tr[${rowIndex}]/td[1]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20220629 17:28:08.590" endtime="20220629 17:28:08.590"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${BrandSize}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="NOT RUN" starttime="20220629 17:28:08.590" endtime="20220629 17:28:08.590"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${BrandSize}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="NOT RUN" starttime="20220629 17:28:08.590" endtime="20220629 17:28:08.590"/>
+</kw>
+<status status="NOT RUN" starttime="20220629 17:28:08.590" endtime="20220629 17:28:08.590"/>
+</branch>
+<branch type="ELSE">
+<kw name="Log To Console" library="BuiltIn">
+<arg>${curText}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220629 17:28:08.590" endtime="20220629 17:28:08.591"/>
+</kw>
+<status status="PASS" starttime="20220629 17:28:08.590" endtime="20220629 17:28:08.591"/>
+</branch>
+<status status="PASS" starttime="20220629 17:28:08.589" endtime="20220629 17:28:08.591"/>
+</if>
+<status status="PASS" starttime="20220629 17:28:08.560" endtime="20220629 17:28:08.591"/>
+</iter>
+<iter>
+<var name="${rowIndex}">3</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${curText}</var>
+<arg>xpath://table[@id='fit-sizechartv2-0-table-0']//tr[${rowIndex}]/td[${colIndex}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220629 17:28:08.618" level="INFO">${curText} = 40</msg>
+<status status="PASS" starttime="20220629 17:28:08.591" endtime="20220629 17:28:08.618"/>
+</kw>
+<if>
+<branch type="IF" condition="&quot;${curText}&quot; == &quot;${InputMeasurements}&quot;">
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${BrandSize}</var>
+<arg>xpath://table[@id='fit-sizechartv2-0-table-0']//tr[${rowIndex}]/td[1]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220629 17:28:08.659" level="INFO">${BrandSize} = M</msg>
+<status status="PASS" starttime="20220629 17:28:08.619" endtime="20220629 17:28:08.659"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${BrandSize}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<msg timestamp="20220629 17:28:08.660" level="INFO">${BrandSize} = M</msg>
+<status status="PASS" starttime="20220629 17:28:08.659" endtime="20220629 17:28:08.660"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${BrandSize}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220629 17:28:08.660" endtime="20220629 17:28:08.661"/>
+</kw>
+<status status="PASS" starttime="20220629 17:28:08.619" endtime="20220629 17:28:08.661"/>
+</branch>
+<branch type="ELSE">
+<kw name="Log To Console" library="BuiltIn">
+<arg>${curText}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="NOT RUN" starttime="20220629 17:28:08.661" endtime="20220629 17:28:08.662"/>
+</kw>
+<status status="NOT RUN" starttime="20220629 17:28:08.661" endtime="20220629 17:28:08.662"/>
+</branch>
+<status status="PASS" starttime="20220629 17:28:08.618" endtime="20220629 17:28:08.662"/>
+</if>
+<status status="PASS" starttime="20220629 17:28:08.591" endtime="20220629 17:28:08.662"/>
+</iter>
+<iter>
+<var name="${rowIndex}">4</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${curText}</var>
+<arg>xpath://table[@id='fit-sizechartv2-0-table-0']//tr[${rowIndex}]/td[${colIndex}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220629 17:28:08.704" level="INFO">${curText} = 42</msg>
+<status status="PASS" starttime="20220629 17:28:08.662" endtime="20220629 17:28:08.704"/>
+</kw>
+<if>
+<branch type="IF" condition="&quot;${curText}&quot; == &quot;${InputMeasurements}&quot;">
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${BrandSize}</var>
+<arg>xpath://table[@id='fit-sizechartv2-0-table-0']//tr[${rowIndex}]/td[1]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20220629 17:28:08.705" endtime="20220629 17:28:08.705"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${BrandSize}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="NOT RUN" starttime="20220629 17:28:08.705" endtime="20220629 17:28:08.705"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${BrandSize}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="NOT RUN" starttime="20220629 17:28:08.705" endtime="20220629 17:28:08.705"/>
+</kw>
+<status status="NOT RUN" starttime="20220629 17:28:08.705" endtime="20220629 17:28:08.705"/>
+</branch>
+<branch type="ELSE">
+<kw name="Log To Console" library="BuiltIn">
+<arg>${curText}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220629 17:28:08.705" endtime="20220629 17:28:08.706"/>
+</kw>
+<status status="PASS" starttime="20220629 17:28:08.705" endtime="20220629 17:28:08.706"/>
+</branch>
+<status status="PASS" starttime="20220629 17:28:08.704" endtime="20220629 17:28:08.706"/>
+</if>
+<status status="PASS" starttime="20220629 17:28:08.662" endtime="20220629 17:28:08.707"/>
+</iter>
+<iter>
+<var name="${rowIndex}">5</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${curText}</var>
+<arg>xpath://table[@id='fit-sizechartv2-0-table-0']//tr[${rowIndex}]/td[${colIndex}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220629 17:28:08.734" level="INFO">${curText} = 44</msg>
+<status status="PASS" starttime="20220629 17:28:08.707" endtime="20220629 17:28:08.735"/>
+</kw>
+<if>
+<branch type="IF" condition="&quot;${curText}&quot; == &quot;${InputMeasurements}&quot;">
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${BrandSize}</var>
+<arg>xpath://table[@id='fit-sizechartv2-0-table-0']//tr[${rowIndex}]/td[1]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20220629 17:28:08.735" endtime="20220629 17:28:08.735"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${BrandSize}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="NOT RUN" starttime="20220629 17:28:08.736" endtime="20220629 17:28:08.736"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${BrandSize}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="NOT RUN" starttime="20220629 17:28:08.736" endtime="20220629 17:28:08.736"/>
+</kw>
+<status status="NOT RUN" starttime="20220629 17:28:08.735" endtime="20220629 17:28:08.736"/>
+</branch>
+<branch type="ELSE">
+<kw name="Log To Console" library="BuiltIn">
+<arg>${curText}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220629 17:28:08.736" endtime="20220629 17:28:08.738"/>
+</kw>
+<status status="PASS" starttime="20220629 17:28:08.736" endtime="20220629 17:28:08.738"/>
+</branch>
+<status status="PASS" starttime="20220629 17:28:08.735" endtime="20220629 17:28:08.738"/>
+</if>
+<status status="PASS" starttime="20220629 17:28:08.707" endtime="20220629 17:28:08.738"/>
+</iter>
+<iter>
+<var name="${rowIndex}">6</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${curText}</var>
+<arg>xpath://table[@id='fit-sizechartv2-0-table-0']//tr[${rowIndex}]/td[${colIndex}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220629 17:28:08.791" level="INFO">${curText} = 46</msg>
+<status status="PASS" starttime="20220629 17:28:08.739" endtime="20220629 17:28:08.791"/>
+</kw>
+<if>
+<branch type="IF" condition="&quot;${curText}&quot; == &quot;${InputMeasurements}&quot;">
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${BrandSize}</var>
+<arg>xpath://table[@id='fit-sizechartv2-0-table-0']//tr[${rowIndex}]/td[1]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20220629 17:28:08.792" endtime="20220629 17:28:08.792"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${BrandSize}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="NOT RUN" starttime="20220629 17:28:08.793" endtime="20220629 17:28:08.793"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${BrandSize}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="NOT RUN" starttime="20220629 17:28:08.793" endtime="20220629 17:28:08.793"/>
+</kw>
+<status status="NOT RUN" starttime="20220629 17:28:08.792" endtime="20220629 17:28:08.793"/>
+</branch>
+<branch type="ELSE">
+<kw name="Log To Console" library="BuiltIn">
+<arg>${curText}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220629 17:28:08.793" endtime="20220629 17:28:08.794"/>
+</kw>
+<status status="PASS" starttime="20220629 17:28:08.793" endtime="20220629 17:28:08.794"/>
+</branch>
+<status status="PASS" starttime="20220629 17:28:08.791" endtime="20220629 17:28:08.794"/>
+</if>
+<status status="PASS" starttime="20220629 17:28:08.738" endtime="20220629 17:28:08.794"/>
+</iter>
+<status status="PASS" starttime="20220629 17:28:08.559" endtime="20220629 17:28:08.795"/>
+</for>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${CloseChart}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220629 17:28:08.795" level="INFO">Clicking element 'xpath://*[@class=' a-button-close a-declarative']'.</msg>
+<status status="PASS" starttime="20220629 17:28:08.795" endtime="20220629 17:28:08.903"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>7s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20220629 17:28:15.915" level="INFO">Slept 7 seconds</msg>
+<status status="PASS" starttime="20220629 17:28:08.903" endtime="20220629 17:28:15.915"/>
+</kw>
+<if>
+<branch type="IF" condition="&quot;${BrandSize}&quot; == &quot;S&quot;">
+<kw name="Set Variable" library="BuiltIn">
+<var>${BS}</var>
+<arg>0</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20220629 17:28:15.916" endtime="20220629 17:28:15.916"/>
+</kw>
+<status status="NOT RUN" starttime="20220629 17:28:15.916" endtime="20220629 17:28:15.916"/>
+</branch>
+<branch type="ELSE IF" condition="&quot;${BrandSize}&quot; == &quot;M&quot;">
+<kw name="Set Variable" library="BuiltIn">
+<var>${BS}</var>
+<arg>1</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20220629 17:28:15.917" level="INFO">${BS} = 1</msg>
+<status status="PASS" starttime="20220629 17:28:15.917" endtime="20220629 17:28:15.917"/>
+</kw>
+<status status="PASS" starttime="20220629 17:28:15.916" endtime="20220629 17:28:15.917"/>
+</branch>
+<branch type="ELSE IF" condition="&quot;${BrandSize}&quot; == &quot;L&quot;">
+<kw name="Set Variable" library="BuiltIn">
+<var>${BS}</var>
+<arg>2</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20220629 17:28:15.917" endtime="20220629 17:28:15.918"/>
+</kw>
+<status status="NOT RUN" starttime="20220629 17:28:15.917" endtime="20220629 17:28:15.918"/>
+</branch>
+<branch type="ELSE IF" condition="&quot;${BrandSize}&quot; == &quot;XL&quot;">
+<kw name="Set Variable" library="BuiltIn">
+<var>${BS}</var>
+<arg>3</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20220629 17:28:15.918" endtime="20220629 17:28:15.918"/>
+</kw>
+<status status="NOT RUN" starttime="20220629 17:28:15.918" endtime="20220629 17:28:15.918"/>
+</branch>
+<branch type="ELSE">
+<kw name="Set Variable" library="BuiltIn">
+<var>${BS}</var>
+<arg>4</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20220629 17:28:15.918" endtime="20220629 17:28:15.918"/>
+</kw>
+<status status="NOT RUN" starttime="20220629 17:28:15.918" endtime="20220629 17:28:15.918"/>
+</branch>
+<status status="PASS" starttime="20220629 17:28:15.915" endtime="20220629 17:28:15.918"/>
+</if>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${BS}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220629 17:28:15.919" endtime="20220629 17:28:15.919"/>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${Cond}</var>
+<arg>Element Should Be Visible</arg>
+<arg>${Box}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="Element Should Be Visible" library="SeleniumLibrary">
+<arg>${Box}</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<msg timestamp="20220629 17:28:16.106" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-3.png"&gt;&lt;img src="selenium-screenshot-3.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg timestamp="20220629 17:28:16.107" level="FAIL">Element with locator 'xpath://span[@id='size_name_2']' not found.</msg>
+<status status="FAIL" starttime="20220629 17:28:15.920" endtime="20220629 17:28:16.108"/>
+</kw>
+<msg timestamp="20220629 17:28:16.109" level="INFO">${Cond} = False</msg>
+<status status="PASS" starttime="20220629 17:28:15.919" endtime="20220629 17:28:16.109"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>${Cond}</arg>
+<arg>Click Element</arg>
+<arg>xpath://span[@id='size_name_${BS}']</arg>
+<arg>ELSE</arg>
+<arg>Click Element</arg>
+<arg>xpath://*[text()=' ${BrandSize} ']</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>xpath://*[text()=' ${BrandSize} ']</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220629 17:28:16.110" level="INFO">Clicking element 'xpath://*[text()=' M ']'.</msg>
+<status status="PASS" starttime="20220629 17:28:16.110" endtime="20220629 17:28:16.175"/>
+</kw>
+<status status="PASS" starttime="20220629 17:28:16.109" endtime="20220629 17:28:16.175"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20220629 17:28:21.179" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20220629 17:28:16.175" endtime="20220629 17:28:21.180"/>
 </kw>
 <kw name="Click Element" library="SeleniumLibrary">
 <arg>${AddToCart}</arg>
 <doc>Click the element identified by ``locator``.</doc>
-<msg timestamp="20220606 21:18:41.622" level="INFO">Clicking element 'xpath://*[@id='add-to-cart-button']'.</msg>
-<status status="PASS" starttime="20220606 21:18:41.622" endtime="20220606 21:18:43.019"/>
+<msg timestamp="20220629 17:28:21.182" level="INFO">Clicking element 'xpath://*[@id='add-to-cart-button']'.</msg>
+<status status="PASS" starttime="20220629 17:28:21.180" endtime="20220629 17:28:22.633"/>
 </kw>
-<status status="PASS" starttime="20220606 21:18:36.549" endtime="20220606 21:18:43.020"/>
+<status status="PASS" starttime="20220629 17:27:52.628" endtime="20220629 17:28:22.633"/>
+</iter>
+<iter>
+<var name="${Item}">1</var>
+<kw name="Get From List" library="Collections">
+<var>${Ele}</var>
+<arg>${List}</arg>
+<arg>${Item}</arg>
+<doc>Returns the value specified with an ``index`` from ``list``.</doc>
+<msg timestamp="20220629 17:28:22.634" level="INFO">${Ele} = u.s. polo assn. men's regular fit t-shirt_Length_27.5</msg>
+<status status="PASS" starttime="20220629 17:28:22.633" endtime="20220629 17:28:22.634"/>
 </kw>
-<kw name="Given User Clicks On Cart" library="Instructions">
-<kw name="Click Link" library="SeleniumLibrary">
-<arg>${CartButton}</arg>
-<doc>Clicks a link identified by ``locator``.</doc>
-<msg timestamp="20220606 21:18:43.027" level="INFO">Clicking link 'xpath://*[@href='https://www.amazon.in/gp/cart/view.html?ref_=nav_cart']'.</msg>
-<status status="PASS" starttime="20220606 21:18:43.026" endtime="20220606 21:18:45.993"/>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${Ele}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220629 17:28:22.634" endtime="20220629 17:28:22.635"/>
 </kw>
-<status status="PASS" starttime="20220606 21:18:43.026" endtime="20220606 21:18:45.994"/>
+<kw name="Split String" library="String">
+<var>${result}</var>
+<arg>${Ele}</arg>
+<arg>_</arg>
+<doc>Splits the ``string`` using ``separator`` as a delimiter string.</doc>
+<msg timestamp="20220629 17:28:22.636" level="INFO">${result} = ["u.s. polo assn. men's regular fit t-shirt", 'Length', '27.5']</msg>
+<status status="PASS" starttime="20220629 17:28:22.635" endtime="20220629 17:28:22.636"/>
 </kw>
-<kw name="Then Users Checks For Recently Added Item" library="Instructions">
-<arg>${Extra}</arg>
-<kw name="Page Should Contain" library="SeleniumLibrary">
-<arg>${ARG}</arg>
-<doc>Verifies that current page contains ``text``.</doc>
-<msg timestamp="20220606 21:18:46.075" level="INFO">Current page contains text 'boAt Bassheads 100 in Ear Wired Earphones with Mic(Black)'.</msg>
-<status status="PASS" starttime="20220606 21:18:45.995" endtime="20220606 21:18:46.075"/>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${result}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220629 17:28:22.636" endtime="20220629 17:28:22.637"/>
 </kw>
-<status status="PASS" starttime="20220606 21:18:45.994" endtime="20220606 21:18:46.076"/>
+<kw name="Get From List" library="Collections">
+<var>${Shirt}</var>
+<arg>${result}</arg>
+<arg>0</arg>
+<doc>Returns the value specified with an ``index`` from ``list``.</doc>
+<msg timestamp="20220629 17:28:22.638" level="INFO">${Shirt} = u.s. polo assn. men's regular fit t-shirt</msg>
+<status status="PASS" starttime="20220629 17:28:22.637" endtime="20220629 17:28:22.638"/>
 </kw>
-<status status="PASS" starttime="20220606 21:18:29.601" endtime="20220606 21:18:46.076"/>
-</test>
-<test id="s1-t2" name="User Should Be Able To Add Another Item In The Cart" line="16">
-<kw name="Given User Clicks On Electronics Options" library="Instructions">
-<kw name="Click Link" library="SeleniumLibrary">
-<arg>${Electronics}</arg>
-<doc>Clicks a link identified by ``locator``.</doc>
-<msg timestamp="20220606 21:18:46.079" level="INFO">Clicking link 'xpath://*[@href='/electronics/b/?ie=UTF8&amp;node=976419031&amp;ref_=nav_cs_electronics']'.</msg>
-<status status="PASS" starttime="20220606 21:18:46.079" endtime="20220606 21:18:47.820"/>
+<kw name="Get From List" library="Collections">
+<var>${Param}</var>
+<arg>${result}</arg>
+<arg>1</arg>
+<doc>Returns the value specified with an ``index`` from ``list``.</doc>
+<msg timestamp="20220629 17:28:22.638" level="INFO">${Param} = Length</msg>
+<status status="PASS" starttime="20220629 17:28:22.638" endtime="20220629 17:28:22.638"/>
 </kw>
-<status status="PASS" starttime="20220606 21:18:46.079" endtime="20220606 21:18:47.821"/>
+<kw name="Get From List" library="Collections">
+<var>${InputMeasurements}</var>
+<arg>${result}</arg>
+<arg>2</arg>
+<doc>Returns the value specified with an ``index`` from ``list``.</doc>
+<msg timestamp="20220629 17:28:22.639" level="INFO">${InputMeasurements} = 27.5</msg>
+<status status="PASS" starttime="20220629 17:28:22.639" endtime="20220629 17:28:22.639"/>
 </kw>
-<kw name="Then User Searches For Particular Item And Clicks On It" library="Instructions">
-<arg>${any}</arg>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${Shirt}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220629 17:28:22.640" endtime="20220629 17:28:22.640"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${Param}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220629 17:28:22.641" endtime="20220629 17:28:22.641"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${InputMeasurements}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220629 17:28:22.642" endtime="20220629 17:28:22.642"/>
+</kw>
 <kw name="Input Text" library="SeleniumLibrary">
 <arg>${Searchbar}</arg>
-<arg>${ARG}</arg>
+<arg>${Shirt}</arg>
 <doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<msg timestamp="20220606 21:18:47.827" level="INFO">Typing text 'New Apple AirPods Pro with MagSafe Charging Case' into text field 'xpath://*[@id='twotabsearchtextbox']'.</msg>
-<status status="PASS" starttime="20220606 21:18:47.827" endtime="20220606 21:18:48.556"/>
+<msg timestamp="20220629 17:28:22.643" level="INFO">Typing text 'u.s. polo assn. men's regular fit t-shirt' into text field 'xpath://*[@id='twotabsearchtextbox']'.</msg>
+<status status="PASS" starttime="20220629 17:28:22.643" endtime="20220629 17:28:23.368"/>
 </kw>
 <kw name="Click Element" library="SeleniumLibrary">
 <arg>${SearchButton}</arg>
 <doc>Click the element identified by ``locator``.</doc>
-<msg timestamp="20220606 21:18:48.557" level="INFO">Clicking element 'xpath://*[@id='nav-search-submit-button']'.</msg>
-<status status="PASS" starttime="20220606 21:18:48.556" endtime="20220606 21:18:51.667"/>
+<msg timestamp="20220629 17:28:23.369" level="INFO">Clicking element 'xpath://*[@id='nav-search-submit-button']'.</msg>
+<status status="PASS" starttime="20220629 17:28:23.368" endtime="20220629 17:28:25.958"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>7s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20220629 17:28:32.969" level="INFO">Slept 7 seconds</msg>
+<status status="PASS" starttime="20220629 17:28:25.958" endtime="20220629 17:28:32.970"/>
 </kw>
 <kw name="Click Element" library="SeleniumLibrary">
-<arg>xpath://*[text()='${ARG}']</arg>
+<arg>${Prod}</arg>
 <doc>Click the element identified by ``locator``.</doc>
-<msg timestamp="20220606 21:18:51.668" level="INFO">Clicking element 'xpath://*[text()='New Apple AirPods Pro with MagSafe Charging Case']'.</msg>
-<status status="PASS" starttime="20220606 21:18:51.667" endtime="20220606 21:18:52.082"/>
+<msg timestamp="20220629 17:28:32.971" level="INFO">Clicking element 'xpath://*[@class='a-section aok-relative s-image-tall-aspect']'.</msg>
+<status status="PASS" starttime="20220629 17:28:32.970" endtime="20220629 17:28:33.298"/>
 </kw>
-<status status="PASS" starttime="20220606 21:18:47.826" endtime="20220606 21:18:52.083"/>
-</kw>
-<kw name="Then User Adds The Item In Cart" library="Instructions">
 <kw name="Switch Window" library="SeleniumLibrary">
 <arg>New</arg>
 <doc>Switches to browser window matching ``locator``.</doc>
-<status status="PASS" starttime="20220606 21:18:52.084" endtime="20220606 21:18:52.101"/>
+<status status="PASS" starttime="20220629 17:28:33.299" endtime="20220629 17:28:33.309"/>
 </kw>
-<kw name="Scroll Element Into View" library="SeleniumLibrary">
-<arg>${AddToCart}</arg>
-<doc>Scrolls the element identified by ``locator`` into view.</doc>
-<status status="PASS" starttime="20220606 21:18:52.102" endtime="20220606 21:18:55.337"/>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${Chart}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220629 17:28:33.309" level="INFO">Clicking element 'xpath://*[text()=' Size Chart ']'.</msg>
+<status status="PASS" starttime="20220629 17:28:33.309" endtime="20220629 17:28:38.484"/>
+</kw>
+<kw name="Get Element Count" library="SeleniumLibrary">
+<var>${rowCount}</var>
+<arg>${Rows}</arg>
+<doc>Returns the number of elements matching ``locator``.</doc>
+<msg timestamp="20220629 17:28:38.566" level="INFO">${rowCount} = 6</msg>
+<status status="PASS" starttime="20220629 17:28:38.484" endtime="20220629 17:28:38.567"/>
+</kw>
+<kw name="Get Element Count" library="SeleniumLibrary">
+<var>${colCount}</var>
+<arg>${Columns}</arg>
+<doc>Returns the number of elements matching ``locator``.</doc>
+<msg timestamp="20220629 17:28:38.613" level="INFO">${colCount} = 5</msg>
+<status status="PASS" starttime="20220629 17:28:38.567" endtime="20220629 17:28:38.613"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${colCount}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220629 17:28:38.613" endtime="20220629 17:28:38.614"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${rowCount}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220629 17:28:38.614" endtime="20220629 17:28:38.615"/>
+</kw>
+<for flavor="IN RANGE">
+<var>${colIndex}</var>
+<value>1</value>
+<value>${colCount} + 1</value>
+<iter>
+<var name="${colIndex}">1</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${colHeader}</var>
+<arg>xpath://table[@id='fit-sizechartv2-0-table-0']//tr[1]//th[${colIndex}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220629 17:28:38.730" level="INFO">${colHeader} = Brand Size</msg>
+<status status="PASS" starttime="20220629 17:28:38.615" endtime="20220629 17:28:38.730"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>'${Param}' == '${colHeader}'</arg>
+<arg>Exit For Loop</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20220629 17:28:38.730" endtime="20220629 17:28:38.731"/>
+</kw>
+<status status="PASS" starttime="20220629 17:28:38.615" endtime="20220629 17:28:38.731"/>
+</iter>
+<iter>
+<var name="${colIndex}">2</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${colHeader}</var>
+<arg>xpath://table[@id='fit-sizechartv2-0-table-0']//tr[1]//th[${colIndex}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220629 17:28:38.767" level="INFO">${colHeader} = Size</msg>
+<status status="PASS" starttime="20220629 17:28:38.731" endtime="20220629 17:28:38.767"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>'${Param}' == '${colHeader}'</arg>
+<arg>Exit For Loop</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20220629 17:28:38.767" endtime="20220629 17:28:38.768"/>
+</kw>
+<status status="PASS" starttime="20220629 17:28:38.731" endtime="20220629 17:28:38.768"/>
+</iter>
+<iter>
+<var name="${colIndex}">3</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${colHeader}</var>
+<arg>xpath://table[@id='fit-sizechartv2-0-table-0']//tr[1]//th[${colIndex}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220629 17:28:38.813" level="INFO">${colHeader} = Chest</msg>
+<status status="PASS" starttime="20220629 17:28:38.768" endtime="20220629 17:28:38.813"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>'${Param}' == '${colHeader}'</arg>
+<arg>Exit For Loop</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20220629 17:28:38.813" endtime="20220629 17:28:38.813"/>
+</kw>
+<status status="PASS" starttime="20220629 17:28:38.768" endtime="20220629 17:28:38.813"/>
+</iter>
+<iter>
+<var name="${colIndex}">4</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${colHeader}</var>
+<arg>xpath://table[@id='fit-sizechartv2-0-table-0']//tr[1]//th[${colIndex}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220629 17:28:38.843" level="INFO">${colHeader} = Shoulder</msg>
+<status status="PASS" starttime="20220629 17:28:38.814" endtime="20220629 17:28:38.843"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>'${Param}' == '${colHeader}'</arg>
+<arg>Exit For Loop</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20220629 17:28:38.844" endtime="20220629 17:28:38.844"/>
+</kw>
+<status status="PASS" starttime="20220629 17:28:38.814" endtime="20220629 17:28:38.844"/>
+</iter>
+<iter>
+<var name="${colIndex}">5</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${colHeader}</var>
+<arg>xpath://table[@id='fit-sizechartv2-0-table-0']//tr[1]//th[${colIndex}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220629 17:28:38.884" level="INFO">${colHeader} = Length</msg>
+<status status="PASS" starttime="20220629 17:28:38.844" endtime="20220629 17:28:38.884"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>'${Param}' == '${colHeader}'</arg>
+<arg>Exit For Loop</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<kw name="Exit For Loop" library="BuiltIn">
+<doc>Stops executing the enclosing FOR loop.</doc>
+<msg timestamp="20220629 17:28:38.885" level="INFO">Exiting for loop altogether.</msg>
+<status status="PASS" starttime="20220629 17:28:38.885" endtime="20220629 17:28:38.885"/>
+</kw>
+<status status="PASS" starttime="20220629 17:28:38.884" endtime="20220629 17:28:38.885"/>
+</kw>
+<status status="PASS" starttime="20220629 17:28:38.844" endtime="20220629 17:28:38.885"/>
+</iter>
+<status status="PASS" starttime="20220629 17:28:38.615" endtime="20220629 17:28:38.886"/>
+</for>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${Param}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220629 17:28:38.886" endtime="20220629 17:28:38.886"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${InputMeasurements}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220629 17:28:38.887" endtime="20220629 17:28:38.888"/>
+</kw>
+<for flavor="IN RANGE">
+<var>${rowIndex}</var>
+<value>2</value>
+<value>${rowCount} + 1</value>
+<iter>
+<var name="${rowIndex}">2</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${curText}</var>
+<arg>xpath://table[@id='fit-sizechartv2-0-table-0']//tr[${rowIndex}]/td[${colIndex}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220629 17:28:38.990" level="INFO">${curText} = 26.5</msg>
+<status status="PASS" starttime="20220629 17:28:38.889" endtime="20220629 17:28:38.990"/>
+</kw>
+<if>
+<branch type="IF" condition="&quot;${curText}&quot; == &quot;${InputMeasurements}&quot;">
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${BrandSize}</var>
+<arg>xpath://table[@id='fit-sizechartv2-0-table-0']//tr[${rowIndex}]/td[1]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20220629 17:28:38.991" endtime="20220629 17:28:38.991"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${BrandSize}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="NOT RUN" starttime="20220629 17:28:38.991" endtime="20220629 17:28:38.991"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${BrandSize}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="NOT RUN" starttime="20220629 17:28:38.991" endtime="20220629 17:28:38.991"/>
+</kw>
+<status status="NOT RUN" starttime="20220629 17:28:38.991" endtime="20220629 17:28:38.992"/>
+</branch>
+<branch type="ELSE">
+<kw name="Log To Console" library="BuiltIn">
+<arg>${curText}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220629 17:28:38.992" endtime="20220629 17:28:38.993"/>
+</kw>
+<status status="PASS" starttime="20220629 17:28:38.992" endtime="20220629 17:28:38.993"/>
+</branch>
+<status status="PASS" starttime="20220629 17:28:38.991" endtime="20220629 17:28:38.993"/>
+</if>
+<status status="PASS" starttime="20220629 17:28:38.888" endtime="20220629 17:28:38.993"/>
+</iter>
+<iter>
+<var name="${rowIndex}">3</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${curText}</var>
+<arg>xpath://table[@id='fit-sizechartv2-0-table-0']//tr[${rowIndex}]/td[${colIndex}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220629 17:28:39.129" level="INFO">${curText} = 27.5</msg>
+<status status="PASS" starttime="20220629 17:28:38.994" endtime="20220629 17:28:39.129"/>
+</kw>
+<if>
+<branch type="IF" condition="&quot;${curText}&quot; == &quot;${InputMeasurements}&quot;">
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${BrandSize}</var>
+<arg>xpath://table[@id='fit-sizechartv2-0-table-0']//tr[${rowIndex}]/td[1]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220629 17:28:39.188" level="INFO">${BrandSize} = M</msg>
+<status status="PASS" starttime="20220629 17:28:39.129" endtime="20220629 17:28:39.188"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${BrandSize}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<msg timestamp="20220629 17:28:39.189" level="INFO">${BrandSize} = M</msg>
+<status status="PASS" starttime="20220629 17:28:39.188" endtime="20220629 17:28:39.189"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${BrandSize}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220629 17:28:39.189" endtime="20220629 17:28:39.190"/>
+</kw>
+<status status="PASS" starttime="20220629 17:28:39.129" endtime="20220629 17:28:39.190"/>
+</branch>
+<branch type="ELSE">
+<kw name="Log To Console" library="BuiltIn">
+<arg>${curText}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="NOT RUN" starttime="20220629 17:28:39.190" endtime="20220629 17:28:39.191"/>
+</kw>
+<status status="NOT RUN" starttime="20220629 17:28:39.190" endtime="20220629 17:28:39.191"/>
+</branch>
+<status status="PASS" starttime="20220629 17:28:39.129" endtime="20220629 17:28:39.191"/>
+</if>
+<status status="PASS" starttime="20220629 17:28:38.993" endtime="20220629 17:28:39.191"/>
+</iter>
+<iter>
+<var name="${rowIndex}">4</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${curText}</var>
+<arg>xpath://table[@id='fit-sizechartv2-0-table-0']//tr[${rowIndex}]/td[${colIndex}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220629 17:28:39.223" level="INFO">${curText} = 28.5</msg>
+<status status="PASS" starttime="20220629 17:28:39.191" endtime="20220629 17:28:39.223"/>
+</kw>
+<if>
+<branch type="IF" condition="&quot;${curText}&quot; == &quot;${InputMeasurements}&quot;">
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${BrandSize}</var>
+<arg>xpath://table[@id='fit-sizechartv2-0-table-0']//tr[${rowIndex}]/td[1]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20220629 17:28:39.223" endtime="20220629 17:28:39.223"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${BrandSize}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="NOT RUN" starttime="20220629 17:28:39.223" endtime="20220629 17:28:39.223"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${BrandSize}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="NOT RUN" starttime="20220629 17:28:39.223" endtime="20220629 17:28:39.223"/>
+</kw>
+<status status="NOT RUN" starttime="20220629 17:28:39.223" endtime="20220629 17:28:39.223"/>
+</branch>
+<branch type="ELSE">
+<kw name="Log To Console" library="BuiltIn">
+<arg>${curText}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220629 17:28:39.224" endtime="20220629 17:28:39.224"/>
+</kw>
+<status status="PASS" starttime="20220629 17:28:39.224" endtime="20220629 17:28:39.224"/>
+</branch>
+<status status="PASS" starttime="20220629 17:28:39.223" endtime="20220629 17:28:39.224"/>
+</if>
+<status status="PASS" starttime="20220629 17:28:39.191" endtime="20220629 17:28:39.224"/>
+</iter>
+<iter>
+<var name="${rowIndex}">5</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${curText}</var>
+<arg>xpath://table[@id='fit-sizechartv2-0-table-0']//tr[${rowIndex}]/td[${colIndex}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220629 17:28:39.271" level="INFO">${curText} = 29.5</msg>
+<status status="PASS" starttime="20220629 17:28:39.225" endtime="20220629 17:28:39.271"/>
+</kw>
+<if>
+<branch type="IF" condition="&quot;${curText}&quot; == &quot;${InputMeasurements}&quot;">
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${BrandSize}</var>
+<arg>xpath://table[@id='fit-sizechartv2-0-table-0']//tr[${rowIndex}]/td[1]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20220629 17:28:39.271" endtime="20220629 17:28:39.272"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${BrandSize}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="NOT RUN" starttime="20220629 17:28:39.272" endtime="20220629 17:28:39.272"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${BrandSize}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="NOT RUN" starttime="20220629 17:28:39.272" endtime="20220629 17:28:39.272"/>
+</kw>
+<status status="NOT RUN" starttime="20220629 17:28:39.271" endtime="20220629 17:28:39.272"/>
+</branch>
+<branch type="ELSE">
+<kw name="Log To Console" library="BuiltIn">
+<arg>${curText}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220629 17:28:39.273" endtime="20220629 17:28:39.273"/>
+</kw>
+<status status="PASS" starttime="20220629 17:28:39.272" endtime="20220629 17:28:39.273"/>
+</branch>
+<status status="PASS" starttime="20220629 17:28:39.271" endtime="20220629 17:28:39.274"/>
+</if>
+<status status="PASS" starttime="20220629 17:28:39.225" endtime="20220629 17:28:39.274"/>
+</iter>
+<iter>
+<var name="${rowIndex}">6</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${curText}</var>
+<arg>xpath://table[@id='fit-sizechartv2-0-table-0']//tr[${rowIndex}]/td[${colIndex}]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220629 17:28:39.338" level="INFO">${curText} = 30.2</msg>
+<status status="PASS" starttime="20220629 17:28:39.274" endtime="20220629 17:28:39.338"/>
+</kw>
+<if>
+<branch type="IF" condition="&quot;${curText}&quot; == &quot;${InputMeasurements}&quot;">
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${BrandSize}</var>
+<arg>xpath://table[@id='fit-sizechartv2-0-table-0']//tr[${rowIndex}]/td[1]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="NOT RUN" starttime="20220629 17:28:39.339" endtime="20220629 17:28:39.339"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${BrandSize}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="NOT RUN" starttime="20220629 17:28:39.339" endtime="20220629 17:28:39.339"/>
+</kw>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${BrandSize}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="NOT RUN" starttime="20220629 17:28:39.339" endtime="20220629 17:28:39.339"/>
+</kw>
+<status status="NOT RUN" starttime="20220629 17:28:39.338" endtime="20220629 17:28:39.340"/>
+</branch>
+<branch type="ELSE">
+<kw name="Log To Console" library="BuiltIn">
+<arg>${curText}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220629 17:28:39.340" endtime="20220629 17:28:39.341"/>
+</kw>
+<status status="PASS" starttime="20220629 17:28:39.340" endtime="20220629 17:28:39.341"/>
+</branch>
+<status status="PASS" starttime="20220629 17:28:39.338" endtime="20220629 17:28:39.341"/>
+</if>
+<status status="PASS" starttime="20220629 17:28:39.274" endtime="20220629 17:28:39.341"/>
+</iter>
+<status status="PASS" starttime="20220629 17:28:38.888" endtime="20220629 17:28:39.341"/>
+</for>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${CloseChart}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220629 17:28:39.342" level="INFO">Clicking element 'xpath://*[@class=' a-button-close a-declarative']'.</msg>
+<status status="PASS" starttime="20220629 17:28:39.341" endtime="20220629 17:28:39.478"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>7s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20220629 17:28:46.485" level="INFO">Slept 7 seconds</msg>
+<status status="PASS" starttime="20220629 17:28:39.478" endtime="20220629 17:28:46.486"/>
+</kw>
+<if>
+<branch type="IF" condition="&quot;${BrandSize}&quot; == &quot;S&quot;">
+<kw name="Set Variable" library="BuiltIn">
+<var>${BS}</var>
+<arg>0</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20220629 17:28:46.487" endtime="20220629 17:28:46.487"/>
+</kw>
+<status status="NOT RUN" starttime="20220629 17:28:46.487" endtime="20220629 17:28:46.488"/>
+</branch>
+<branch type="ELSE IF" condition="&quot;${BrandSize}&quot; == &quot;M&quot;">
+<kw name="Set Variable" library="BuiltIn">
+<var>${BS}</var>
+<arg>1</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20220629 17:28:46.489" level="INFO">${BS} = 1</msg>
+<status status="PASS" starttime="20220629 17:28:46.489" endtime="20220629 17:28:46.489"/>
+</kw>
+<status status="PASS" starttime="20220629 17:28:46.488" endtime="20220629 17:28:46.490"/>
+</branch>
+<branch type="ELSE IF" condition="&quot;${BrandSize}&quot; == &quot;L&quot;">
+<kw name="Set Variable" library="BuiltIn">
+<var>${BS}</var>
+<arg>2</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20220629 17:28:46.490" endtime="20220629 17:28:46.490"/>
+</kw>
+<status status="NOT RUN" starttime="20220629 17:28:46.490" endtime="20220629 17:28:46.490"/>
+</branch>
+<branch type="ELSE IF" condition="&quot;${BrandSize}&quot; == &quot;XL&quot;">
+<kw name="Set Variable" library="BuiltIn">
+<var>${BS}</var>
+<arg>3</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20220629 17:28:46.491" endtime="20220629 17:28:46.491"/>
+</kw>
+<status status="NOT RUN" starttime="20220629 17:28:46.491" endtime="20220629 17:28:46.491"/>
+</branch>
+<branch type="ELSE">
+<kw name="Set Variable" library="BuiltIn">
+<var>${BS}</var>
+<arg>4</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" starttime="20220629 17:28:46.492" endtime="20220629 17:28:46.492"/>
+</kw>
+<status status="NOT RUN" starttime="20220629 17:28:46.491" endtime="20220629 17:28:46.492"/>
+</branch>
+<status status="PASS" starttime="20220629 17:28:46.486" endtime="20220629 17:28:46.492"/>
+</if>
+<kw name="Log To Console" library="BuiltIn">
+<arg>${BS}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220629 17:28:46.492" endtime="20220629 17:28:46.494"/>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${Cond}</var>
+<arg>Element Should Be Visible</arg>
+<arg>${Box}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="Element Should Be Visible" library="SeleniumLibrary">
+<arg>${Box}</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<msg timestamp="20220629 17:28:46.698" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-4.png"&gt;&lt;img src="selenium-screenshot-4.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg timestamp="20220629 17:28:46.699" level="FAIL">Element with locator 'xpath://span[@id='size_name_2']' not found.</msg>
+<status status="FAIL" starttime="20220629 17:28:46.496" endtime="20220629 17:28:46.699"/>
+</kw>
+<msg timestamp="20220629 17:28:46.699" level="INFO">${Cond} = False</msg>
+<status status="PASS" starttime="20220629 17:28:46.495" endtime="20220629 17:28:46.699"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>${Cond}</arg>
+<arg>Click Element</arg>
+<arg>xpath://span[@id='size_name_${BS}']</arg>
+<arg>ELSE</arg>
+<arg>Click Element</arg>
+<arg>xpath://*[text()=' ${BrandSize} ']</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>xpath://*[text()=' ${BrandSize} ']</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220629 17:28:46.700" level="INFO">Clicking element 'xpath://*[text()=' M ']'.</msg>
+<status status="PASS" starttime="20220629 17:28:46.700" endtime="20220629 17:28:46.757"/>
+</kw>
+<status status="PASS" starttime="20220629 17:28:46.699" endtime="20220629 17:28:46.757"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20220629 17:28:51.769" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20220629 17:28:46.757" endtime="20220629 17:28:51.770"/>
 </kw>
 <kw name="Click Element" library="SeleniumLibrary">
 <arg>${AddToCart}</arg>
 <doc>Click the element identified by ``locator``.</doc>
-<msg timestamp="20220606 21:18:55.338" level="INFO">Clicking element 'xpath://*[@id='add-to-cart-button']'.</msg>
-<status status="PASS" starttime="20220606 21:18:55.338" endtime="20220606 21:18:56.740"/>
+<msg timestamp="20220629 17:28:51.773" level="INFO">Clicking element 'xpath://*[@id='add-to-cart-button']'.</msg>
+<status status="PASS" starttime="20220629 17:28:51.771" endtime="20220629 17:28:53.202"/>
 </kw>
-<status status="PASS" starttime="20220606 21:18:52.084" endtime="20220606 21:18:56.741"/>
+<status status="PASS" starttime="20220629 17:28:22.633" endtime="20220629 17:28:53.202"/>
+</iter>
+<status status="PASS" starttime="20220629 17:27:52.627" endtime="20220629 17:28:53.202"/>
+</for>
+<status status="PASS" starttime="20220629 17:27:52.620" endtime="20220629 17:28:53.203"/>
 </kw>
-<kw name="Given User Clicks On Cart" library="Instructions">
+<kw name="User Clicks On Cart" library="Common">
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>${CartButton}</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20220629 17:28:53.217" endtime="20220629 17:28:53.312"/>
+</kw>
 <kw name="Click Link" library="SeleniumLibrary">
 <arg>${CartButton}</arg>
 <doc>Clicks a link identified by ``locator``.</doc>
-<msg timestamp="20220606 21:18:56.743" level="INFO">Clicking link 'xpath://*[@href='https://www.amazon.in/gp/cart/view.html?ref_=nav_cart']'.</msg>
-<status status="PASS" starttime="20220606 21:18:56.742" endtime="20220606 21:18:59.693"/>
+<msg timestamp="20220629 17:28:53.314" level="INFO">Clicking link 'xpath://*[@href='https://www.amazon.in/gp/cart/view.html?ref_=nav_cart']'.</msg>
+<status status="PASS" starttime="20220629 17:28:53.313" endtime="20220629 17:28:56.402"/>
 </kw>
-<status status="PASS" starttime="20220606 21:18:56.742" endtime="20220606 21:18:59.693"/>
+<status status="PASS" starttime="20220629 17:28:53.217" endtime="20220629 17:28:56.403"/>
 </kw>
-<kw name="Then Users Checks For Recently Added Item" library="Instructions">
-<arg>${any}</arg>
-<kw name="Page Should Contain" library="SeleniumLibrary">
-<arg>${ARG}</arg>
-<doc>Verifies that current page contains ``text``.</doc>
-<msg timestamp="20220606 21:18:59.749" level="INFO">Current page contains text 'New Apple AirPods Pro with MagSafe Charging Case'.</msg>
-<status status="PASS" starttime="20220606 21:18:59.695" endtime="20220606 21:18:59.750"/>
-</kw>
-<status status="PASS" starttime="20220606 21:18:59.694" endtime="20220606 21:18:59.750"/>
-</kw>
-<status status="PASS" starttime="20220606 21:18:46.078" endtime="20220606 21:18:59.750"/>
+<tag>Second</tag>
+<status status="PASS" starttime="20220629 17:27:52.618" endtime="20220629 17:28:56.404"/>
 </test>
-<status status="PASS" starttime="20220606 21:18:24.772" endtime="20220606 21:18:59.752"/>
+<status status="PASS" starttime="20220629 17:27:47.920" endtime="20220629 17:28:56.407"/>
 </suite>
 <statistics>
 <total>
-<stat pass="2" fail="0" skip="0">All Tests</stat>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
 </total>
 <tag>
+<stat pass="1" fail="0" skip="0">Second</stat>
 </tag>
 <suite>
-<stat pass="2" fail="0" skip="0" id="s1" name="TestCases">TestCases</stat>
+<stat pass="1" fail="0" skip="0" id="s1" name="TestCases">TestCases</stat>
 </suite>
 </statistics>
 <errors>
+<msg timestamp="20220629 17:27:48.262" level="WARN">Imported resource file 'D:\Amazon1\Input.txt' is empty.</msg>
 </errors>
 </robot>
