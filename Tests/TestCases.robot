@@ -23,7 +23,7 @@ User Should Be Able To Add Another Item In The Cart
     Then Users Checks For Recently Added Item  ${any} 
 
 User Should Be Able To Add A Product Into The Cart Based On Any Parameter In Size Chart
-    [Tags]  Second
+    [Tags]  Basic
     User Searches For An Item And Clicks On It
     Then Opens Size Chart  
     And Closes Size Chart
@@ -31,5 +31,5 @@ User Should Be Able To Add A Product Into The Cart Based On Any Parameter In Siz
     User Clicks On Cart
 
 User Should Be Able To Add Product
-    [Tags]  First
+    [Tags]  DataDriven
     Then Selects
