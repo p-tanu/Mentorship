@@ -1,10 +1,8 @@
 *** Settings ***
 Library  SeleniumLibrary
 Library  String
-Library  Dialogs
 Library  OperatingSystem
 Library  Collections
-
 
 *** Keywords ***
 Open Amazon Website
@@ -20,24 +18,19 @@ Then User Searches For Particular Item And Clicks On It
     Click Element  ${SearchButton}
     Click Element  xpath://*[text()='${ARG}']
 
- 
 Then User Adds The Item In Cart
     Switch Window  New
     Scroll Element Into View  ${AddToCart}
     Click Element  ${AddToCart}
 
-
-
 Then Users Checks For Recently Added Item
     [Arguments]  ${ARG}
     Page Should Contain  ${ARG}
-
 
 User Searches For An Item And Clicks On It
     ${TextFile} =  Get File  Input.txt
     ${List} =  Split to lines  ${TextFile}
     ${Stringg} =  Convert To String  ${TextFile}
-    
     Log To Console  ${List}
     ${result} =    Split String    ${Stringg}    _
     Log To Console  ${result}
@@ -53,8 +46,6 @@ User Searches For An Item And Clicks On It
     Click Element  ${SearchButton}
     Click Element  ${Prod}
 
-
-
 Then Opens Size Chart
     Switch Window  New
     Click Element  ${Chart}
@@ -62,9 +53,6 @@ Then Opens Size Chart
     ${colCount}=    Get Element Count    ${Columns}
     Log To Console  ${colCount}
     Log To Console  ${rowCount} 
-
-    
-    
     #${InputMeasurements} =  Get Value From User  Enter Measurements
     FOR   ${colIndex}  IN RANGE    1  ${colCount} + 1
         ${colHeader}=    Get Text  xpath://table[@id='fit-sizechartv2-0-table-0']//tr[1]//th[${colIndex}] 
@@ -83,14 +71,9 @@ Then Opens Size Chart
         END
     END
     
-    
-
-
-
 And Closes Size Chart
     Click Element  ${CloseChart}
     Sleep  5s
-
 
 And Selects A Size And Adds It To The Cart
     IF    "${BrandSize}" == "S"
@@ -108,11 +91,9 @@ And Selects A Size And Adds It To The Cart
     ${Cond} =  Run Keyword And Return Status  Element Should Be Visible  ${Box}
     Run Keyword If  ${Cond}  Click Element  xpath://span[@id='size_name_${BS}']
     ...  ELSE   Click Element  xpath://*[text()=' ${BrandSize} ']
-
     Sleep  3s
     Wait For And Click On Element  ${AddToCart}
     Wait For And Click On Element  ${CartButton}
-
 
 Then Selects
     ${TextFile} =  Get File  Input.txt
