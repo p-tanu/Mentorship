@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "gsautomation",
+  "private_key_id": "8e8c16b40eba2f00e42434aaa7d799705bbc5c50",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCijKXxoQUwQKoB\nSrB/RB1R7U4G1KyAErQre01m4kUcXA2OnpCNWn9pxQTUkbZXfD1DL6jh/b2BtRpu\ncNHYk4xUs1RJ5CsGMDtwRr3hNSniK9/X5gWnpEwHJyv8UbxRtwg9NgjRD3oCafRr\n94LAEOZTJQcce7jSgQezLV07RlvZsFtQfVHLgBKYkiOY5hY51ogWjgWsATxfREwe\nbKNryj9QsnSQIf4mg8bgv6cO9jaQ4yMnSEg7nrt+oznAL6lRZOWxg5OE5U1pGA+1\n9VkWnBbZXxEu5sYgOpfkkupn2j54zXNanM0TK0BJ3gNaX++74bogtcmGVtuQkZ+w\n4Zj+MeCPAgMBAAECggEAMWGECi9OGbYTT3gmvUruk1SBtz6FtxS3ilwXjBFiSHbI\noZKXPHIJMhMp3//yQoqaO95vMlR47T4c7P82KNLON28RRK9dyK//ZqD/Dzss4apN\ngtO81QxrEmM6kBkumi5+AMZ5EDXg7XnNyLz1Ci84IXsmuWb2o3CSa8L0x0ydG7jk\nkEHXUi6ZitYnk3kMoVi1xJs5c5wdroD20HqUG2EVNdaspbXBQsG2rOfHe294B8pC\nUz6pa3aBRQBOOe7K3hFO+E9ZHuGRUaCIjgFgqU1F62QEKuhicJ/3mCJtkE05+nzB\nyGqE7DwciU9LfNITXvZZcWPxMjpEpccRUXV7A37ehQKBgQDkaP8bo0Y59yu3xX8u\n5l4oXRrieG2ZQzRAaXQ6mRw6VY2CRYbxenb9cjxABY3UdQaGBwp/u2rRSkwv0LrB\nf0NtgG4IrsLVFVCwf9PoZyiycLITmxvlx/HzMqlYy+y8SYg54iaMfijy7tENmrLC\nhjrVB7bN6ldpgA/urVeoVnky/QKBgQC2LxNkJOWO1O09iOF5EYdxNsJgFKbjdpoJ\nISxf7PdD04/X1/hD6SIRaQek1+DvgcdH0x/ixLma1lU1xA9fnAVwLFKRcvUB4bCm\nMCirtwgP5x4VfPMCOd5x3YH8tVg7+emPu9+dQrWyMMgRg7YmLp2czkxCaSgzgJ1F\nYlGvlIg1ewKBgCBosYHnaeiBpMdfk4tBDq0lgNIPimWLvpdBH0fNP88bIogQe3Q6\nDzYpBlmDMDusGy/bQecb3a0yoJrMQCOCfjvEVFiRC34WlytkB9pbANBI40ua35t8\nAl2im5rI3J9ew6CK8TNQF1lY/3qxr5mgWCqv/IU9Mgf7LseL+vscwfe1AoGAMroY\n5CGB6atQA3pBjbxbwiJFLQuTDHLRoQkjmfIZR0F5I9h2wDIB0mc0Qan6b7XrDwyy\nLCoqo/pZ74aP4UdIHFu7AdTIc6Wr0hpGuMlV7VelAMaxw0TpszrCHuM/ljOX3PWq\n5dbVULBUhMvvw+Hm8OpgQX2WPADryY3+wKzS4FECgYEAiuNNG30fY2DgV5Dvuymv\nlS8NSOVgootlTUFoFZxihZGFT8CL6AvsPGD9MqJoNwtXF57mbjzfub2vuZzq4MKR\nNrPOF2Gbojv09ME3tNv9U4TI4fRJ+PY7s/HzYPoRI7+kbZcksT+qDd7XFTzWOG0U\nluEwGXNelxbrUK2JYoHPyZs=\n-----END PRIVATE KEY-----\n",
+  "client_email": "tanvi-459@gsautomation.iam.gserviceaccount.com",
+  "client_id": "115595275461172905566",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/tanvi-459%40gsautomation.iam.gserviceaccount.com"
+}

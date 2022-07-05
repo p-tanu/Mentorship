@@ -8,28 +8,35 @@ Suite Setup  Open Amazon Website
 #Suite Teardown  Close Browser
 
 *** Test Cases ***
+#Argument 1
 User Should Be Able To Add An Item In The Cart
+    [Tags]  Argument_1
     Given User Clicks On Electronics Options
     Then User Searches For Particular Item And Clicks On It  ${Extra}  
-    Then User Adds The Item In Cart
-    User Clicks On Cart
+    And User Adds The Item In Cart
+    Then User Clicks On Cart
     Then Users Checks For Recently Added Item  ${Extra}  
 
 User Should Be Able To Add Another Item In The Cart
+    [Tags]  Argument_2
     Given User Clicks On Electronics Options
     Then User Searches For Particular Item And Clicks On It  ${any}  
-    Then User Adds The Item In Cart
-    User Clicks On Cart
+    And User Adds The Item In Cart
+    Then User Clicks On Cart
     Then Users Checks For Recently Added Item  ${any} 
 
+#Input.txt File
 User Should Be Able To Add A Product Into The Cart Based On Any Parameter In Size Chart
-    [Tags]  Basic
+    [Tags]  InputFile
     User Searches For An Item And Clicks On It
     Then Opens Size Chart  
     And Closes Size Chart
     And Selects A Size And Adds It To The Cart
-    User Clicks On Cart
+    Then User Clicks On Cart
 
+#Google Sheet
 User Should Be Able To Add Product
     [Tags]  DataDriven
-    Then Selects
+    Given User Fetches Data From Google Sheet
+    Then User Adds Product In Cart
+    Then User Clicks On Cart
