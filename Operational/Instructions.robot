@@ -3,27 +3,28 @@ Library  SeleniumLibrary
 Library  String
 Library  OperatingSystem
 Library  Collections
+Library  ../gs.py
 
 *** Keywords ***
 Open Amazon Website
     Open Browser  ${Url}   ${Browser}
     Maximize Browser Window
 
-Given User Clicks On Electronics Options
+User Clicks On Electronics Options
     Click Link  ${Electronics} 
 
-Then User Searches For Particular Item And Clicks On It
+User Searches For Particular Item And Clicks On It
     [Arguments]  ${ARG}
     Input Text  ${Searchbar}  ${ARG}
     Click Element  ${SearchButton}
     Click Element  xpath://*[text()='${ARG}']
 
-Then User Adds The Item In Cart
+User Adds The Item In Cart
     Switch Window  New
     Scroll Element Into View  ${AddToCart}
     Click Element  ${AddToCart}
 
-Then Users Checks For Recently Added Item
+Users Checks For Recently Added Item
     [Arguments]  ${ARG}
     Page Should Contain  ${ARG}
 
@@ -46,7 +47,7 @@ User Searches For An Item And Clicks On It
     Click Element  ${SearchButton}
     Click Element  ${Prod}
 
-Then Opens Size Chart
+Opens Size Chart
     Switch Window  New
     Click Element  ${Chart}
     ${rowCount}=    Get Element Count    ${Rows}
@@ -71,11 +72,11 @@ Then Opens Size Chart
         END
     END
     
-And Closes Size Chart
+Closes Size Chart
     Click Element  ${CloseChart}
     Sleep  5s
 
-And Selects A Size And Adds It To The Cart
+Selects A Size And Adds It To The Cart
     IF    "${BrandSize}" == "S"
         ${BS} =    Set Variable  0
     ELSE IF    "${BrandSize}" == "M"     
@@ -95,26 +96,29 @@ And Selects A Size And Adds It To The Cart
     Wait For And Click On Element  ${AddToCart}
     Wait For And Click On Element  ${CartButton}
 
-Then Selects
-    ${TextFile} =  Get File  Input.txt
-    ${List} =    Split String    ${TextFile}    \n
-    Log To Console  ${List}
-    ${Length} =  Get Length  ${List}
+
+User Fetches Data From Google Sheet 
+    [Arguments]  ${arg1}
+    ${Result1} =  Ret Data  ${arg1}   
+    Log To Console  ${Result1}
+    Set Suite Variable    ${Result1}
+    
+
+User Adds Product In Cart
+    ${Length} =  Get Length  ${Result1}
     Log To Console  ${Length}
     FOR   ${Item}  IN RANGE    0  ${Length}
-        ${sdf} =  Get From List  ${List}  ${Item}
-        Log To Console  ${sdf}
-        ${result} =    Split String    ${sdf}    _
-        Log To Console  ${result}
-        ${Shirt} =  Get From List  ${result}  0
-        ${Param} =  Get From List  ${result}  1
-        ${InputMeasurements} =  Get From List  ${result}  2
-        Log To Console  ${Shirt}
-        Log To Console  ${Param}
-        Log To Console  ${InputMeasurements}
-        Input Text  ${Searchbar}  ${Shirt}
+        ${Product} =  Get From List  ${Result1}  ${Item}
+        Log To Console  ${Product}
+        ${Prod_Name} =  Get From List  ${Product}  0
+        ${Prod_Param} =  Get From List  ${Product}  1
+        ${Prod_Measurements} =  Get From List  ${Product}  2
+        Log To Console  ${Prod_Name}
+        Log To Console  ${Prod_Param}
+        Log To Console  ${Prod_Measurements}
+        Input Text  ${Searchbar}  ${Prod_Name}
         Click Element  ${SearchButton}
-        Sleep  2s
+        Sleep  7s
         Click Element  ${Prod}
         Switch Window  New
         Click Element  ${Chart}
@@ -124,22 +128,22 @@ Then Selects
         Log To Console  ${rowCount}
         FOR   ${colIndex}  IN RANGE    1  ${colCount} + 1
             ${colHeader}=    Get Text  xpath://table[@id='fit-sizechartv2-0-table-0']//tr[1]//th[${colIndex}] 
-            Run Keyword If  '${Param}' == '${colHeader}'  Exit For Loop
+            Run Keyword If  '${Prod_Param}' == '${colHeader}'  Exit For Loop
         END
-        Log To Console  ${Param}
-        Log To Console  ${InputMeasurements}  
+        Log To Console  ${Prod_Param}
+        Log To Console  ${Prod_Measurements}  
         FOR   ${rowIndex}  IN RANGE    2  ${rowCount} + 1
-            ${curText}=    Get Text   xpath://table[@id='fit-sizechartv2-0-table-0']//tr[${rowIndex}]/td[${colIndex}]
-            IF    "${curText}" == "${InputMeasurements}"      
+            ${CurText}=    Get Text   xpath://table[@id='fit-sizechartv2-0-table-0']//tr[${rowIndex}]/td[${colIndex}]
+            IF    "${CurText}" == "${Prod_Measurements}"      
                 ${BrandSize}=   Get Text    xpath://table[@id='fit-sizechartv2-0-table-0']//tr[${rowIndex}]/td[1]
                 Set Suite Variable    ${BrandSize}
                 Log To Console  ${BrandSize}
             ELSE 
-                Log To Console  ${curText}
+                Log To Console  ${CurText}
             END
         END
         Click Element  ${CloseChart}
-        Sleep  2s
+        Sleep  5s
         IF    "${BrandSize}" == "S"
         ${BS} =    Set Variable  0
         ELSE IF    "${BrandSize}" == "M"     

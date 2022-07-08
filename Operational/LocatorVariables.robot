@@ -20,3 +20,4 @@ ${SS} =  xpath://*[@class='a-native-dropdown a-declarative']
 ${CloseChart}=  xpath://*[@class=' a-button-close a-declarative']
 #${FinalSize} =   xpath://*[text()=' ${BrandSize} ']
 ${Box} =  xpath://span[@id='size_name_2']
+${Range} =  Data!A2:C3
