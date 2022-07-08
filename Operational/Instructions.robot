@@ -98,7 +98,8 @@ Selects A Size And Adds It To The Cart
 
 
 User Fetches Data From Google Sheet 
-    ${Result1} =  Ret Data
+    [Arguments]  ${arg1}
+    ${Result1} =  Ret Data  ${arg1}   
     Log To Console  ${Result1}
     Set Suite Variable    ${Result1}
     
