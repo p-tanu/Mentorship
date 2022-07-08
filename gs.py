@@ -19,15 +19,15 @@ class gs:
         def __init__(self) -> None:
                 pass
         @keyword
-        def Ret_Data(self,arg1):
+        def Ret_Data(self,arg2):
                 # The ID and range of a sample spreadsheet.
                 SAMPLE_SPREADSHEET_ID = '11MPMQEjBYY8Rh_vxclJABaQir7jmz3v0J_jbCWFBFkQ'
-                self.arg1 = arg1
+                self.arg1 = arg2
                 #SAMPLE_RANGE_NAME = 'Data!A2:C3'
                 service = build('sheets', 'v4', credentials=creds)
                 # Call the Sheets API
                 sheet = service.spreadsheets()
-                result = sheet.values().get(spreadsheetId=SAMPLE_SPREADSHEET_ID,range=arg1).execute()
+                result = sheet.values().get(spreadsheetId=SAMPLE_SPREADSHEET_ID,range=arg2).execute()
                 #print(result)
                 #print(type(result))
                 #global res
